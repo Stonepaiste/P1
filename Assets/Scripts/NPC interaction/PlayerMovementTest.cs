@@ -6,16 +6,29 @@ using UnityEngine.InputSystem;
 public class PlayerMovementTest : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private InputAction talkAction;
     private Vector2 movementValue;
+
+    [SerializeField]private InputActionAsset inputActions;
+    [SerializeField]private NPCDialoge NPCDialoge;
     [SerializeField]private float moveSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        talkAction = inputActions.FindActionMap("Player").FindAction("Talk"); 
     }
 
-    void OnMove(InputValue value)
+    private void Update()
+    {
+        if (talkAction.triggered)
+        {
+            NPCDialoge.Talk();
+        }
+    } 
+
+   public void OnMove(InputValue value)
     {
         movementValue = value.Get<Vector2>();
     }

@@ -280,9 +280,41 @@ MonoBehaviour:
   m_ControlsChangedEvent:
     m_PersistentCalls:
       m_Calls: []
-  m_ActionEvents: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 340912112}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f0ded51c-7145-4ff4-9be8-da8dfedee7d4
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 340912112}
+        m_TargetAssemblyTypeName: PlayerMovementTest, Assembly-CSharp
+        m_MethodName: OnTalk
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 209475b5-3251-4b4e-b619-ef67ea228b8d
+    m_ActionName: Player/Talk[/Keyboard/m]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -298,6 +330,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e641183b957b449b4be06ee18a46ad4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputActions: {fileID: -944628639613478452, guid: c1d8542e6417d410a937870733afb290, type: 3}
+  NPCDialoge: {fileID: 1124043186}
   moveSpeed: 3
 --- !u!50 &340912113
 Rigidbody2D:
@@ -337,6 +371,7 @@ GameObject:
   - component: {fileID: 1105114427}
   - component: {fileID: 1105114426}
   - component: {fileID: 1105114425}
+  - component: {fileID: 1105114428}
   m_Layer: 0
   m_Name: NPCText
   m_TagString: Untagged
@@ -460,9 +495,30 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -13.7556, y: 0}
+  m_AnchoredPosition: {x: 812, y: 337}
   m_SizeDelta: {x: 172.4888, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &1105114428
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105114424}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8665f5cdcbd76464b8bb3a266f457b0f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1124043182
 GameObject:
   m_ObjectHideFlags: 0
@@ -609,6 +665,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogeBox: {fileID: 1105114424}
   boxOffset: {x: 0, y: 1, z: 0}
+  detectPlayer: 0
 --- !u!1 &1653900493
 GameObject:
   m_ObjectHideFlags: 0

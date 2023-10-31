@@ -7,19 +7,22 @@ public class NPCDialoge : MonoBehaviour
     private Camera mainCam;
     [SerializeField]private GameObject dialogeBox;
     [SerializeField]private Vector3 boxOffset;
+    [HideInInspector]public bool detectPlayer;
 
     private void Start()
     {
         mainCam = Camera.main;
         dialogeBox.transform.position = mainCam.WorldToScreenPoint(transform.position + boxOffset);
+
+        detectPlayer = false;
+        dialogeBox.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("her");
-
+            detectPlayer = true;
         }
     }
 
@@ -27,9 +30,17 @@ public class NPCDialoge : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Ikke her");
+            detectPlayer = false;
+            dialogeBox.SetActive(false);
         }
     }
 
+    public void Talk()
+    {
+        if (detectPlayer)
+        {
+            dialogeBox.SetActive(true);
+        }
+    }
 
 }
