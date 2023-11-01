@@ -20,7 +20,7 @@ public class NPCDialoge : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.CompareTag("Player"))
         {
             detectPlayer = true;
             dialogeBox.SetActive(true);
@@ -30,7 +30,7 @@ public class NPCDialoge : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.CompareTag("Player"))
         {
             detectPlayer = false;
             dialogeBox.SetActive(false);
