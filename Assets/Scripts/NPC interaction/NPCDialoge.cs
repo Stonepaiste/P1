@@ -5,9 +5,11 @@ using UnityEngine;
 public class NPCDialoge : MonoBehaviour
 {
     private Camera mainCam;
+    [SerializeField]private Animator anim;
     [SerializeField]private GameObject dialogeBox;
     [SerializeField]private Vector3 boxOffset;
     [HideInInspector]public bool detectPlayer;
+
 
     private void Start()
     {
@@ -41,8 +43,8 @@ public class NPCDialoge : MonoBehaviour
     {
         if (detectPlayer)
         {
+            anim.SetTrigger("Animate");
             dialogeBox.SetActive(true);
         }
     }
-
 }
