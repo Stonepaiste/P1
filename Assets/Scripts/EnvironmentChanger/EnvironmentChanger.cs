@@ -10,7 +10,7 @@ public class EnvironmentChanger : MonoBehaviour
 
     public Transform specificSide; // Assign the transform of the specific side of the collider.
 
-    private int currentStage = 0; // Initialize to -1 to indicate no stage is active.
+    private int currentStage = 0; // Initialize to 0 to indicate first stage ís active
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
