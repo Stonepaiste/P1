@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector2.down * Input.GetAxis("Vertical") * PlayerSpeed * Time.deltaTime);//1.0.0
+        transform.Translate(Vector2.up * Input.GetAxis("Vertical") * PlayerSpeed * Time.deltaTime);//1.0.0
         transform.Translate(Vector2.right * Input.GetAxis("Horizontal") * PlayerSpeed * Time.deltaTime);//0.0.1
     }
 }
