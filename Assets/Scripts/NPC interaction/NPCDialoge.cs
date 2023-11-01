@@ -23,6 +23,8 @@ public class NPCDialoge : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             detectPlayer = true;
+            dialogeBox.SetActive(true);
+
         }
     }
 
