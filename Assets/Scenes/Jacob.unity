@@ -2076,7 +2076,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 327257665}
   offset: {x: 1, y: 0, z: -10}
-  followTime: 0.15
+  followTime: 0.9
 --- !u!1 &531252057
 GameObject:
   m_ObjectHideFlags: 0

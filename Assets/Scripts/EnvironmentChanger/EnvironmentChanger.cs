@@ -9,53 +9,51 @@ public class EnvironmentChanger : MonoBehaviour
     public int maxStages = 3; //Number of stages
 
     public Transform specificSide; // Assign the transform of the specific side of the collider.
-
-    private int currentStage = 0; //Defining the current stage. starts at 0
-    private List<GameObject> objectsActivatedInPreviousStages = new List<GameObject>();
+    private int currentStage = -1; // Initialize to -1 to indicate no stage is active.
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
             // Calculate the player's position relative to the specific side of the collider.
             float relativePosition = other.transform.position.x - specificSide.position.x;
-
             if (currentStage < maxStages && relativePosition >= 0)
             {
-                DeactivateObjectsFromPreviousStages();
-                ActivateObjectsForStage(currentStage);
-                currentStage++;
+                // Deactivate objects from the previous stage.
+                if (currentStage >= 0)
+                {
+                    DeactivateObjectsForStage(currentStage);
+                }
 
+                currentStage++;
+                if (currentStage < objectsToShow.Count)
+                {
+                    ActivateObjectsForStage(currentStage);
+                }
             }
 
         }
 
     }
 
-    private void DeactivateObjectsFromPreviousStages()
-    {
-        // Deactivate objects from previous stages.
-        foreach (GameObject obj in objectsActivatedInPreviousStages)
-        {
-            obj.SetActive(false);
-        }
-
-        objectsActivatedInPreviousStages.Clear();
-    }
     private void ActivateObjectsForStage(int stage)
     {
-        // i is a variable that starts at 0 and loops through
-        // Activate objects for the given stage. by looking through the object to show list.
-        for (int i = 0; i <= stage; i++) //loops through stages
+        // Activate objects for the given stage.
+        if (stage < objectsToShow.Count)
         {
-            if (i < objectsToShow.Count) //checks if i is less than the total objects to show list this case 3
-            {
-                objectsToShow[i].SetActive(true);
-                objectsActivatedInPreviousStages.Add(objectsToShow[i]);
-            }
+            objectsToShow[stage].SetActive(true);
         }
     }
 
-    
+    private void DeactivateObjectsForStage(int stage)
+    {
+        // Deactivate objects for the given stage.
+        if (stage < objectsToShow.Count)
+        {
+            objectsToShow[stage].SetActive(false);
+        }
+    }
+
+
 
 }
 
