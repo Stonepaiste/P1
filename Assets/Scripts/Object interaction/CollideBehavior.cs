@@ -35,6 +35,7 @@ public class CollideBehavior : MonoBehaviour
             Debug.Log("Quest collision");
             myAnimator.SetBool("HasTrash", false);
             HasTrash1 = false;
+            trashcanvas.SetActive(false);
 
         }
         else
