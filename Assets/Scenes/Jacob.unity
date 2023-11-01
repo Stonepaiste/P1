@@ -4282,6 +4282,7 @@ MonoBehaviour:
   - {fileID: 45977608}
   - {fileID: 1203518376}
   maxStages: 3
+  specificSide: {fileID: 1311352155}
 --- !u!1 &1342549385
 GameObject:
   m_ObjectHideFlags: 0
