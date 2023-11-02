@@ -6,18 +6,21 @@ public class NPCDialoge : MonoBehaviour
 {
     private Camera mainCam;
     [SerializeField]private Animator anim;
+    [SerializeField]private GameObject pressM;
     [SerializeField]private GameObject dialogeBox;
-    [SerializeField]private Vector3 boxOffset;
+    [SerializeField]private Vector3 textOffset;
     [HideInInspector]public bool detectPlayer;
 
 
     private void Start()
     {
         mainCam = Camera.main;
-        dialogeBox.transform.position = mainCam.WorldToScreenPoint(transform.position + boxOffset);
+        dialogeBox.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
+        pressM.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
 
         detectPlayer = false;
         dialogeBox.SetActive(false);
+        pressM.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -25,6 +28,7 @@ public class NPCDialoge : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             detectPlayer = true;
+            pressM.SetActive(true);
         }
     }
 
@@ -34,6 +38,7 @@ public class NPCDialoge : MonoBehaviour
         {
             detectPlayer = false;
             dialogeBox.SetActive(false);
+            pressM.SetActive(false);
         }
     }
 
@@ -41,6 +46,7 @@ public class NPCDialoge : MonoBehaviour
     {
         if (detectPlayer)
         {
+            pressM.SetActive(false);
             anim.SetTrigger("Animate");
             dialogeBox.SetActive(true);
         }

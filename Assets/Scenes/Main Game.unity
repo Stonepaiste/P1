@@ -293,6 +293,18 @@ PrefabInstance:
       propertyPath: m_DefaultControlScheme
       value: Keyboard&Mouse
       objectReference: {fileID: 0}
+    - target: {fileID: 3726109689394085800, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3726109689394085800, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
+      propertyPath: m_Color.g
+      value: 0.36917162
+      objectReference: {fileID: 0}
+    - target: {fileID: 3726109689394085800, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3977866588591629733, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
       propertyPath: m_LinearDrag
       value: 12
