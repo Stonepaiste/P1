@@ -4708,6 +4708,7 @@ MonoBehaviour:
   - {fileID: 1203518376}
   maxStages: 2
   specificSide: {fileID: 1311352155}
+  checkRight: 0
 --- !u!1 &1321470241
 GameObject:
   m_ObjectHideFlags: 0
@@ -6524,7 +6525,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2352699370941312069, guid: f3902c1788797c44f8f2d9316211a30f, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
