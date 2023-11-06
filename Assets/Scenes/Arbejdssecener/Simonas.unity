@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 871383374}
-  offset: {x: 0, y: 0, z: 0}
+  offset: {x: 1, y: 0, z: -10}
   followTime: 0.5
 --- !u!1 &871383372
 GameObject:
