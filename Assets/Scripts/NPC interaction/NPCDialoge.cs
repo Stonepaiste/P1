@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class NPCDialoge : MonoBehaviour
 {
@@ -12,11 +13,9 @@ public class NPCDialoge : MonoBehaviour
     [SerializeField]private Vector3 textOffset;     //offset hvor tekst skal placere sig ift. npc'en selv
     [HideInInspector]public bool detectPlayer;      //Bool der holder styr om spilleren er tæt på npcen
 
-
     private void Start()
     {
         mainCam = Camera.main;                      //henter kamera
-
 
         //Sætter de rigtige parametre til false når spillet starter
         detectPlayer = false;
@@ -63,4 +62,5 @@ public class NPCDialoge : MonoBehaviour
             dialogeBox.SetActive(true);
         }
     }
+
 }
