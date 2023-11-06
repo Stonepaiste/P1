@@ -17,15 +17,18 @@ public class NPCDialoge : MonoBehaviour
     {
         mainCam = Camera.main;                      //henter kamera
 
-        //Siger til tekstbokse at de skal placere sig ved npc'ens position + det givne offset
-        dialogeBox.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
-        pressM.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
 
         //Sætter de rigtige parametre til false når spillet starter
         detectPlayer = false;
         dialogeBox.SetActive(false);
         pressM.SetActive(false);
+    }
 
+    private void Update()
+    {
+        //Siger til tekstbokse at de skal placere sig ved npc'ens position + det givne offset
+        dialogeBox.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
+        pressM.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
