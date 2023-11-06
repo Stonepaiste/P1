@@ -747,7 +747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {x: 0, y: 0}
-  speed: 20
+  speed: 40
   inputActions: {fileID: -944628639613478452, guid: c1d8542e6417d410a937870733afb290, type: 3}
   NPCDialoge: {fileID: 0}
 --- !u!1 &4925551373443432044
