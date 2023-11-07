@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3977866588591629733}
   - component: {fileID: 3289346647689098682}
   - component: {fileID: 4091248066723436992}
+  - component: {fileID: 7429821852816394290}
   - component: {fileID: 1187346899029514270}
   - component: {fileID: 5467987174577485148}
   m_Layer: 0
@@ -159,9 +160,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {x: 0, y: 0}
-  speed: 20
+  speed: 60
   inputActions: {fileID: -944628639613478452, guid: c1d8542e6417d410a937870733afb290, type: 3}
   NPCDialoge: {fileID: 0}
+--- !u!114 &7429821852816394290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4925551373763294494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd656406c64880c47a4d5f888e022ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HasBottleTrash: 0
 --- !u!61 &1187346899029514270
 BoxCollider2D:
   m_ObjectHideFlags: 0
