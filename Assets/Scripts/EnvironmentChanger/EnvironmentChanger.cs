@@ -10,11 +10,30 @@ public class EnvironmentChanger : MonoBehaviour
 
     public Transform specificSide; // Assign the transform of the specific side of the collider.
     public bool checkRight;
+    public bool checkDown;
     private int currentStage = 0; // Initialize to 0 to indicate first stage ís active
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            if (checkDown)
+            {
+                float relativePosition = other.transform.position.y - specificSide.position.y;
+                if (currentStage < maxStages && relativePosition >= 0)
+                {
+                    // Deactivate objects from the previous stage.
+                    if (currentStage >= 0)
+                    {
+                        DeactivateObjectsForStage(currentStage);
+                    }
+
+                    currentStage++;
+                    if (currentStage < objectsToShow.Count)
+                    {
+                        ActivateObjectsForStage(currentStage);
+                    }
+                }
+            }
             if (checkRight) 
             {
                 float relativePosition = other.transform.position.x - specificSide.position.x;

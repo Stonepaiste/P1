@@ -13,6 +13,8 @@ public class PlayerMovementFisk : MonoBehaviour
     private InputAction talkAction;
     [SerializeField] private InputActionAsset inputActions;
     [SerializeField] private NPCDialoge NPCDialoge; //reference til dialogscript
+    [SerializeField] private NPCDialoge NPCDialoge2; //reference til dialogscript
+
 
     private Animator animator;
 
@@ -51,6 +53,7 @@ public class PlayerMovementFisk : MonoBehaviour
         if (talkAction.triggered)
         {
             NPCDialoge.Talk();
+            NPCDialoge2.Talk();
         }
     }
 
