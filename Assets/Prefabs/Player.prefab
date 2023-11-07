@@ -13,7 +13,10 @@ GameObject:
   - component: {fileID: 3977866588591629733}
   - component: {fileID: 3289346647689098682}
   - component: {fileID: 4091248066723436992}
+  - component: {fileID: 7429821852816394290}
   - component: {fileID: 1187346899029514270}
+  - component: {fileID: 5467987174577485148}
+  - component: {fileID: 1722408591193683705}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -31,7 +34,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.4910044, y: 0.4910044, z: 0.4910044}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -158,9 +161,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {x: 0, y: 0}
-  speed: 20
+  speed: 60
   inputActions: {fileID: -944628639613478452, guid: c1d8542e6417d410a937870733afb290, type: 3}
   NPCDialoge: {fileID: 0}
+--- !u!114 &7429821852816394290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4925551373763294494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd656406c64880c47a4d5f888e022ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HasBottleTrash: 0
 --- !u!61 &1187346899029514270
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -206,3 +222,37 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!95 &5467987174577485148
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4925551373763294494}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8e9ed8d9a5830054f92a134b13ffe626, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1722408591193683705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4925551373763294494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd656406c64880c47a4d5f888e022ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HasBottleTrash: 0

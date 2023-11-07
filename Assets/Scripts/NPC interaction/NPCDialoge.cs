@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class NPCDialoge : MonoBehaviour
 {
@@ -12,20 +13,21 @@ public class NPCDialoge : MonoBehaviour
     [SerializeField]private Vector3 textOffset;     //offset hvor tekst skal placere sig ift. npc'en selv
     [HideInInspector]public bool detectPlayer;      //Bool der holder styr om spilleren er tæt på npcen
 
-
     private void Start()
     {
         mainCam = Camera.main;                      //henter kamera
-
-        //Siger til tekstbokse at de skal placere sig ved npc'ens position + det givne offset
-        dialogeBox.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
-        pressM.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
 
         //Sætter de rigtige parametre til false når spillet starter
         detectPlayer = false;
         dialogeBox.SetActive(false);
         pressM.SetActive(false);
+    }
 
+    private void Update()
+    {
+        //Siger til tekstbokse at de skal placere sig ved npc'ens position + det givne offset
+        dialogeBox.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
+        pressM.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -60,4 +62,5 @@ public class NPCDialoge : MonoBehaviour
             dialogeBox.SetActive(true);
         }
     }
+
 }
