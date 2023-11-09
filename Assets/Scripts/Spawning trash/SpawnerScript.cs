@@ -34,7 +34,7 @@ public class spawning : MonoBehaviour
     private void SpawnTrash()
     {
         int randTrash = Random.Range(0, trash.Length);
-        Vector3 randomSpawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), 1, Random.Range(-spawnValues.z, spawnValues.z));
+        Vector3 randomSpawnPosition = new Vector3(Random.Range(transform.position.x -spawnValues.x,transform.position.x + spawnValues.x), transform.position.y + spawnValues.y, 1);
         Instantiate(trash[randTrash], randomSpawnPosition, Quaternion.identity);
     }
 }
