@@ -5,16 +5,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovementFisk : MonoBehaviour
 {
-    public Vector2 movement; // Kalder Vector2 info og gemmer dem i memory som "movement"
+    private Vector2 movement; // Kalder Vector2 info og gemmer dem i memory som "movement"
     private Rigidbody2D Fiskekrop; // kalder ridigbofy classen og gemmer den som "fiskekrop"
     [SerializeField] private int speed = 5; // SerializeField gør at access modifieren er sat til private men at vi stadig kan se values i unity
 
     //Referer til input systemet
     private InputAction talkAction;
     [SerializeField] private InputActionAsset inputActions;
-    [SerializeField] private NPCDialoge NPCDialoge; //reference til dialogscript
-    [SerializeField] private NPCDialoge NPCDialoge2; //reference til dialogscript
-
+    [SerializeField] private NPCDialoge turtle; //reference til dialogscript
+    [SerializeField] private NPCDialoge sixpackFish; //reference til dialogscript
+    [SerializeField] private NPCDialoge suicideFish; //reference til dialogscript
+    [SerializeField] private NPCDialoge sadfish; //reference til dialogscript
 
     private Animator animator;
 
@@ -52,8 +53,17 @@ public class PlayerMovementFisk : MonoBehaviour
         //Hvis vores input til at snakke bliver triggered, kalder den snakke action i npc scriptet
         if (talkAction.triggered)
         {
-            NPCDialoge.Talk();
-            NPCDialoge2.Talk();
+            if(turtle != null)
+                turtle.Talk();
+
+            if(suicideFish != null)
+                suicideFish.Talk();
+
+            if(sixpackFish != null)
+                sixpackFish.Talk();
+
+            if(sadfish != null)
+                sadfish.Talk();
         }
     }
 
