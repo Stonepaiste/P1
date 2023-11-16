@@ -6,7 +6,6 @@ public class spawning : MonoBehaviour
 {
     public GameObject[] trash;
     public Vector3 spawnValues;
-    public float spawnWait;
     public float spawnMostWait;
     public float spawnLeastWait;
 
@@ -19,10 +18,6 @@ public class spawning : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator StartTrash()
     {
-        
-        
-            yield return new WaitForSeconds(Random.Range(0, spawnWait));
-
             while (true)
             {
                 SpawnTrash();
