@@ -3551,14 +3551,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Contrast: 1.8
+    - _Contrast: 24.1
     - _Fade: 1
-    - _Shear: 1.02
-    - _Size: 12
-    - _Skew: 0.22
+    - _Shear: 0.916
+    - _Size: 24.8
+    - _Skew: 0.5
     - _Speed: 0.5
     m_Colors:
-    - _Color1: {r: 1, g: 1, b: 1, a: 1}
+    - _Color1: {r: 1, g: 1, b: 1, a: 0.050980393}
     - _Color2: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
 --- !u!1001 &1244426044
@@ -4613,14 +4613,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3eef6c7ecda590448d3132c3f0b2f5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color1: {r: 1, g: 1, b: 1, a: 1}
+  color1: {r: 1, g: 1, b: 1, a: 0.050980393}
   color2: {r: 1, g: 1, b: 1, a: 0}
   speed: 0.5
-  size: 12
-  skew: 0.22
-  shear: 1.02
+  size: 24.8
+  skew: 0.5
+  shear: 0.916
   fade: 1
-  contrast: 1.8
+  contrast: 24.1
   sortingLayer: 485446055
   orderInLayer: 0
 --- !u!23 &1503187993
@@ -4682,8 +4682,8 @@ Transform:
   m_GameObject: {fileID: 1503187991}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.6, y: -102.8, z: 0}
-  m_LocalScale: {x: 220.38358, y: 90.87983, z: 90.87983}
+  m_LocalPosition: {x: -4.3426, y: -123.5955, z: 0}
+  m_LocalScale: {x: 102.28964, y: 64.09896, z: 86.24496}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
