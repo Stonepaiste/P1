@@ -6,9 +6,10 @@ using System;
 
 public class NPCDialoge : MonoBehaviour
 {
-    private Camera mainCam;                         //Camera
+    private Camera mainCam;                          //Camera
     [SerializeField] private Vector3 textOffset;     //offset hvor tekst skal placere sig ift. npc'en selv
-    public enum state { firstmeeting, help, thankyou, dead }
+
+    public enum state { firstmeeting, help, thankyou, dead, follow }
     public state currentState = state.firstmeeting;
 
     [Header("Dialouge Textboxes")]
@@ -17,13 +18,14 @@ public class NPCDialoge : MonoBehaviour
     [SerializeField]private GameObject helpDialouge;
     [SerializeField]private GameObject thankyouDialouge;
     [SerializeField]private GameObject pressToTalk;      //objekt der indeholder press m tekst
-
+    private Animator anim;
 
     [HideInInspector]public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
 
     private void Start()
     {
         mainCam = Camera.main;                      //henter kamera
+        anim = GetComponent<Animator>();
 
         //Sætter de rigtige parametre til false når spillet starter
         detectPlayer = false;
@@ -84,7 +86,9 @@ public class NPCDialoge : MonoBehaviour
                     break;
 
                 case state.help:
-                    firstDialouge.SetActive(false);
+                    if(firstDialouge.activeInHierarchy)
+                        firstDialouge.SetActive(false);
+
                     helpDialouge.SetActive(true);
                     helpDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     break;
@@ -94,6 +98,13 @@ public class NPCDialoge : MonoBehaviour
                     thankyouDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     break;
 
+                case state.dead:
+                    anim.SetTrigger("dead");
+                    break;
+
+                case state.follow:
+                    //follow logic
+                    break;
             }
         }
     }

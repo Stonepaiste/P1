@@ -14,7 +14,7 @@ public class PlayerMovementFisk : MonoBehaviour
     [SerializeField] private InputActionAsset inputActions; //Input action map
     [SerializeField] private NPCDialoge turtle; //reference til dialogscript
     [SerializeField] private NPCDialoge sixpackFish; //reference til dialogscript
-    [SerializeField] private NPCDialoge suicideFish; //reference til dialogscript
+    [SerializeField] private NPCDialoge cod; //reference til dialogscript
     [SerializeField] private NPCDialoge sadfish; //reference til dialogscript
 
     private Animator animator;
@@ -55,8 +55,14 @@ public class PlayerMovementFisk : MonoBehaviour
             if(turtle != null)
                 turtle.Talk();
 
-            if(suicideFish != null)
-                suicideFish.Talk();
+            if(cod != null)
+            {
+                cod.Talk();
+                if(cod.currentState == NPCDialoge.state.help)
+                {
+                    cod.currentState = NPCDialoge.state.dead;
+                }
+            }
 
             if(sixpackFish != null)
                 sixpackFish.Talk();
