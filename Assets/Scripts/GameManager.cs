@@ -4,15 +4,55 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public NPCDialoge sixPackFish;
+    public NPCDialoge turtle;
+    public NPCDialoge soren;
+    public NPCDialoge sadFish;
+
+    public PlayerMovementFisk pm;
+
+    public enum gameStage { stage1, stage2, stage3, stage4, stage5, stage6 }
+
+    public gameStage currentStage = gameStage.stage1;
+
+
     void Start()
     {
-        
+        pm = FindAnyObjectByType<PlayerMovementFisk>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (soren.currentState == NPCDialoge.state.dead)
+            currentStage = gameStage.stage2;
+
+       
+
+        switch (currentStage)
+        {
+            case gameStage.stage1:
+                
+                break;
+
+            case gameStage.stage2:
+                
+                break;
+
+            case gameStage.stage3:
+                
+                break;
+
+            case gameStage.stage4:
+
+                break;
+
+            case gameStage.stage5:
+
+                break;
+
+            case gameStage.stage6:
+
+                break;
+        }
     }
 }

@@ -12,6 +12,9 @@ public class NPCDialoge : MonoBehaviour
     public enum state { firstmeeting, help, thankyou, dead, follow }
     public state currentState = state.firstmeeting;
 
+    [SerializeField] private float waitToMoveSoren = 5;
+    [SerializeField] private float moveInstant = 0;
+
     [Header("Dialouge Textboxes")]
     //objekter der indeholder dialogtekst
     [SerializeField]private GameObject firstDialouge;
@@ -77,6 +80,11 @@ public class NPCDialoge : MonoBehaviour
         if (detectPlayer)
         {
             pressToTalk.SetActive(false);
+
+            if(currentState == NPCDialoge.state.firstmeeting)
+                StartCoroutine(WaitToMove(waitToMoveSoren));
+
+
             switch (currentState)
             {
                 case state.firstmeeting:
@@ -100,6 +108,7 @@ public class NPCDialoge : MonoBehaviour
 
                 case state.dead:
                     anim.SetTrigger("dead");
+
                     break;
 
                 case state.follow:
@@ -108,4 +117,14 @@ public class NPCDialoge : MonoBehaviour
             }
         }
     }
+
+    private IEnumerator WaitToMove(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+        PlayerMovementFisk pm = GameObject.FindAnyObjectByType<PlayerMovementFisk>();
+        pm.canMove = true;
+        pm.canTalk = true;
+
+    }
+
 }

@@ -1247,6 +1247,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5692756683397493771, guid: 91476eadcf7394262b27eed48b9adb5f, type: 3}
+      propertyPath: waitToMove
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5692756683397493771, guid: 91476eadcf7394262b27eed48b9adb5f, type: 3}
       propertyPath: textOffset.y
       value: 5.5
       objectReference: {fileID: 0}

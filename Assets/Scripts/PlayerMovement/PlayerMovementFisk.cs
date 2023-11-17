@@ -17,10 +17,15 @@ public class PlayerMovementFisk : MonoBehaviour
     [SerializeField] private NPCDialoge cod; //reference til dialogscript
     [SerializeField] private NPCDialoge sadfish; //reference til dialogscript
 
+    public bool canMove;
+    public bool canTalk;
+
     private Animator animator;
 
     private void Awake() // kører kun 1 gang når program starter 
     {
+        canMove = true;
+        canTalk = true;
         animator = GetComponent<Animator>();
         Fiskekrop = GetComponent<Rigidbody2D>(); // Vi sætter "fiskekrop" ridigbody til rigidbody på vores gameobject
         talkAction = inputActions.FindActionMap("Player").FindAction("Talk"); //Finder talk inputtet i input mappet i unity
@@ -32,9 +37,12 @@ public class PlayerMovementFisk : MonoBehaviour
 
         if (movement.x != 0 || movement.y != 0)
         {
-            animator.SetFloat("Horizontal", movement.x);
-            animator.SetFloat("Vertical", movement.y);
-            animator.SetBool("IsWalking", true);
+            if (canMove)
+            {
+                animator.SetFloat("Horizontal", movement.x);
+                animator.SetFloat("Vertical", movement.y);
+                animator.SetBool("IsWalking", true);
+            }
         }
         else
         {
@@ -44,14 +52,18 @@ public class PlayerMovementFisk : MonoBehaviour
 
     private void FixedUpdate() //fixed update er bedre til movement da den sætter en fast movement på trods af FPS og CPU power
     {
-        Fiskekrop.AddForce(movement * speed);
+        if(canMove)
+            Fiskekrop.AddForce(movement * speed);
     }
 
     private void Update()
     {
         //Hvis vores input til at snakke bliver triggered, kalder den snakke action i npc scriptet
-        if (talkAction.triggered)
+        if (talkAction.triggered && canTalk)
         {
+            canMove = false;
+            canTalk = false;
+
             if(turtle != null)
                 turtle.Talk();
 
