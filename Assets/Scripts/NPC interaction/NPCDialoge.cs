@@ -2,16 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 
 public class NPCDialoge : MonoBehaviour
 {
+    private Camera mainCam;                         //Camera
+    [SerializeField] private Vector3 textOffset;     //offset hvor tekst skal placere sig ift. npc'en selv
+    public enum state { firstmeeting, help, thankyou, dead }
+    public state currentState = state.firstmeeting;
 
-    private Camera mainCam;                         
-    [SerializeField]private Animator anim;          //Animator til tekst
-    [SerializeField]private GameObject pressM;      //objekt der indeholder press m tekst
-    [SerializeField]private GameObject dialogeBox;  //objekt der indeholder dialogtekst
-    [SerializeField]private Vector3 textOffset;     //offset hvor tekst skal placere sig ift. npc'en selv
-    [HideInInspector]public bool detectPlayer;      //Bool der holder styr om spilleren er tæt på npcen
+    [Header("Dialouge Textboxes")]
+    //objekter der indeholder dialogtekst
+    [SerializeField]private GameObject firstDialouge;
+    [SerializeField]private GameObject helpDialouge;
+    [SerializeField]private GameObject thankyouDialouge;
+    [SerializeField]private GameObject pressToTalk;      //objekt der indeholder press m tekst
+
+
+    [HideInInspector]public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
 
     private void Start()
     {
@@ -19,15 +27,16 @@ public class NPCDialoge : MonoBehaviour
 
         //Sætter de rigtige parametre til false når spillet starter
         detectPlayer = false;
-        dialogeBox.SetActive(false);
-        pressM.SetActive(false);
+        firstDialouge.SetActive(false);
+        helpDialouge.SetActive(false);
+        thankyouDialouge.SetActive(false);
+        pressToTalk.SetActive(false);
     }
 
     private void Update()
     {
         //Siger til tekstbokse at de skal placere sig ved npc'ens position + det givne offset
-        dialogeBox.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
-        pressM.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
+        PlaceText();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -36,7 +45,7 @@ public class NPCDialoge : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             detectPlayer = true;
-            pressM.SetActive(true);
+            pressToTalk.SetActive(true);
         }
     }
 
@@ -46,21 +55,46 @@ public class NPCDialoge : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             detectPlayer = false;
-            dialogeBox.SetActive(false);
-            pressM.SetActive(false);
+            firstDialouge.SetActive(false);
+            helpDialouge.SetActive(false);
+            thankyouDialouge.SetActive(false);
+            pressToTalk.SetActive(false);
         }
+    }
+
+    private void PlaceText()
+    {
+        firstDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
+        helpDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
+        thankyouDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
+        pressToTalk.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
     }
 
     public void Talk()
-    //Denne funktion bliver kaldt fra scriptet på spilleren når man trykker M
-    //Dialog bliver kun tændt for hvis detectplayer er true.
     {
         if (detectPlayer)
         {
-            pressM.SetActive(false);
-            anim.SetTrigger("Animate");
-            dialogeBox.SetActive(true);
+            pressToTalk.SetActive(false);
+            switch (currentState)
+            {
+                case state.firstmeeting:
+                    firstDialouge.SetActive(true);
+                    firstDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                    currentState = state.help;
+                    break;
+
+                case state.help:
+                    firstDialouge.SetActive(false);
+                    helpDialouge.SetActive(true);
+                    helpDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                    break;
+
+                case state.thankyou:
+                    thankyouDialouge.SetActive(true);
+                    thankyouDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                    break;
+
+            }
         }
     }
-
 }

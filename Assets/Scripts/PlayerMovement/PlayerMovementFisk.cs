@@ -10,8 +10,8 @@ public class PlayerMovementFisk : MonoBehaviour
     [SerializeField] private int speed = 5; // SerializeField gør at access modifieren er sat til private men at vi stadig kan se values i unity
 
     //Referer til input systemet
-    private InputAction talkAction;
-    [SerializeField] private InputActionAsset inputActions;
+    private InputAction talkAction; //specifikke talk actions
+    [SerializeField] private InputActionAsset inputActions; //Input action map
     [SerializeField] private NPCDialoge turtle; //reference til dialogscript
     [SerializeField] private NPCDialoge sixpackFish; //reference til dialogscript
     [SerializeField] private NPCDialoge suicideFish; //reference til dialogscript
@@ -40,7 +40,6 @@ public class PlayerMovementFisk : MonoBehaviour
         {
             animator.SetBool("IsWalking", false);
         }
-     
     }
 
     private void FixedUpdate() //fixed update er bedre til movement da den sætter en fast movement på trods af FPS og CPU power
@@ -66,7 +65,4 @@ public class PlayerMovementFisk : MonoBehaviour
                 sadfish.Talk();
         }
     }
-
-
-
 }
