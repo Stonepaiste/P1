@@ -18,17 +18,12 @@ public class NPCDialoge : MonoBehaviour
 
     [SerializeField] private Vector3 textOffset;     //offset hvor tekst skal placere sig ift. npc'en selv
 
+
     public enum state { firstmeeting, help, thankyou, dead, follow }
 
-    [SerializeField] private float waitToMoveSoren = 5;
-    [SerializeField] private float moveInstant = 0;
+    [SerializeField] private float waitToMove = 5;
 
-    [Header("Dialouge Textboxes")]
-
-                                                     //objekter der indeholder dialogtekst
-
-    //objekter der indeholder dialogtekst
-
+    [Header("dialouge boxes")]
     [SerializeField]private GameObject firstDialouge;
     [SerializeField]private GameObject helpDialouge;
     [SerializeField]private GameObject thankyouDialouge;
@@ -93,7 +88,7 @@ public class NPCDialoge : MonoBehaviour
             pressToTalk.SetActive(false);
 
             if(currentState == NPCDialoge.state.firstmeeting)
-                StartCoroutine(WaitToMove(waitToMoveSoren));
+                StartCoroutine(WaitToMove(waitToMove));
 
 
             switch (currentState)
