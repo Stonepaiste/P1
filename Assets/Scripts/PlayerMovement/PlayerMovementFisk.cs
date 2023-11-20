@@ -12,10 +12,10 @@ public class PlayerMovementFisk : MonoBehaviour
     //Referer til input systemet
     private InputAction talkAction; //specifikke talk actions
     [SerializeField] private InputActionAsset inputActions; //Input action map
-    [SerializeField] private NPCDialoge turtle; //reference til dialogscript
-    [SerializeField] private NPCDialoge sixpackFish; //reference til dialogscript
-    [SerializeField] private NPCDialoge cod; //reference til dialogscript
-    [SerializeField] private NPCDialoge sadfish; //reference til dialogscript
+    [SerializeField] private TurtleNPC turtle; //reference til dialogscript
+    [SerializeField] private SixpackFish sixpackFish; //reference til dialogscript
+    [SerializeField] private CodNPC cod; //reference til dialogscript
+    //[SerializeField] private NPCDialoge sadfish; //reference til dialogscript
 
     public bool canMove;
     public bool canTalk;
@@ -65,12 +65,13 @@ public class PlayerMovementFisk : MonoBehaviour
 
             if(cod != null)
                 cod.Talk();
-
+            
             if(sixpackFish != null)
                 sixpackFish.Talk();
 
-            if(sadfish != null)
-                sadfish.Talk();
+            //if(sadfish != null)
+           //     sadfish.Talk();
+            
         }
     }
 }

@@ -4,54 +4,37 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public NPCDialoge sixPackFish;
-    public NPCDialoge turtle;
-    public NPCDialoge soren;
-    public NPCDialoge sadFish;
-
-    public PlayerMovementFisk pm;
-
-    public enum gameStage { stage1, stage2, stage3, stage4, stage5, stage6 }
+    public enum gameStage { stage1, stage2, stage3, stage4, stage5, stage6, stage7 }
 
     public gameStage currentStage = gameStage.stage1;
 
+    public static GameManager instance;
 
     void Start()
     {
-        pm = FindAnyObjectByType<PlayerMovementFisk>();
+        instance = this;
     }
 
     void Update()
     {
-        if (soren.currentState == NPCDialoge.state.dead)
-            currentStage = gameStage.stage2;
-
-       
-
         switch (currentStage)
         {
             case gameStage.stage1:
-                
                 break;
 
             case gameStage.stage2:
-                
                 break;
 
             case gameStage.stage3:
-                
                 break;
 
             case gameStage.stage4:
-
                 break;
 
             case gameStage.stage5:
-
                 break;
 
             case gameStage.stage6:
-
                 break;
         }
     }
