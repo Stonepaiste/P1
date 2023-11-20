@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class CollideBehavior : MonoBehaviour
 {
-
     public bool HasBottleTrash;
     public bool HasOilBarrelTrash;
-
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -55,13 +53,8 @@ public class CollideBehavior : MonoBehaviour
         {
             Debug.Log("Quest collision");
             HasBottleTrash = false;
-
         }
-
     }
-
-
-
 }
 
 

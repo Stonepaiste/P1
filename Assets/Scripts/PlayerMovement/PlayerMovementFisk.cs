@@ -14,13 +14,18 @@ public class PlayerMovementFisk : MonoBehaviour
     [SerializeField] private InputActionAsset inputActions; //Input action map
     [SerializeField] private NPCDialoge turtle; //reference til dialogscript
     [SerializeField] private NPCDialoge sixpackFish; //reference til dialogscript
-    [SerializeField] private NPCDialoge suicideFish; //reference til dialogscript
+    [SerializeField] private NPCDialoge cod; //reference til dialogscript
     [SerializeField] private NPCDialoge sadfish; //reference til dialogscript
+
+    public bool canMove;
+    public bool canTalk;
 
     private Animator animator;
 
     private void Awake() // kører kun 1 gang når program starter 
     {
+        canMove = true;
+        canTalk = true;
         animator = GetComponent<Animator>();
         Fiskekrop = GetComponent<Rigidbody2D>(); // Vi sætter "fiskekrop" ridigbody til rigidbody på vores gameobject
         talkAction = inputActions.FindActionMap("Player").FindAction("Talk"); //Finder talk inputtet i input mappet i unity
@@ -32,31 +37,34 @@ public class PlayerMovementFisk : MonoBehaviour
 
         if (movement.x != 0 || movement.y != 0)
         {
-            animator.SetFloat("Horizontal", movement.x);
-            animator.SetFloat("Vertical", movement.y);
-            animator.SetBool("IsWalking", true);
+            if (canMove)
+            {
+                animator.SetFloat("Horizontal", movement.x);
+                animator.SetFloat("Vertical", movement.y);
+                animator.SetBool("IsWalking", true);
+            }
         }
         else
-        {
             animator.SetBool("IsWalking", false);
-        }
+        
     }
 
     private void FixedUpdate() //fixed update er bedre til movement da den sætter en fast movement på trods af FPS og CPU power
     {
-        Fiskekrop.AddForce(movement * speed);
+        if(canMove)             //kan kun bevæge sig hvis canMove er true, bruges til at stoppe spiller når man snakker med npc
+            Fiskekrop.AddForce(movement * speed);
     }
 
     private void Update()
     {
         //Hvis vores input til at snakke bliver triggered, kalder den snakke action i npc scriptet
-        if (talkAction.triggered)
+        if (talkAction.triggered && canTalk)
         {
             if(turtle != null)
                 turtle.Talk();
 
-            if(suicideFish != null)
-                suicideFish.Talk();
+            if(cod != null)
+                cod.Talk();
 
             if(sixpackFish != null)
                 sixpackFish.Talk();
