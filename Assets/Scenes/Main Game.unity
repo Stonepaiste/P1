@@ -2949,6 +2949,14 @@ PrefabInstance:
     - {fileID: 2719392497709295408, guid: 4eca8523066014acd8788c77176098da, type: 3}
     - {fileID: 895162280292422974, guid: 4eca8523066014acd8788c77176098da, type: 3}
     - {fileID: 196112271420592781, guid: 4eca8523066014acd8788c77176098da, type: 3}
+    - {fileID: 6742499338541421590, guid: 4eca8523066014acd8788c77176098da, type: 3}
+    - {fileID: 7094911369322970145, guid: 4eca8523066014acd8788c77176098da, type: 3}
+    - {fileID: 8642229179559025410, guid: 4eca8523066014acd8788c77176098da, type: 3}
+    - {fileID: 2999886551295443334, guid: 4eca8523066014acd8788c77176098da, type: 3}
+    - {fileID: 5496572725782330716, guid: 4eca8523066014acd8788c77176098da, type: 3}
+    - {fileID: 7957546610771586771, guid: 4eca8523066014acd8788c77176098da, type: 3}
+    - {fileID: 6741414902010085291, guid: 4eca8523066014acd8788c77176098da, type: 3}
+    - {fileID: 5869388125279351964, guid: 4eca8523066014acd8788c77176098da, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2430288472741377352, guid: 4eca8523066014acd8788c77176098da, type: 3}
       insertIndex: 0
@@ -6017,7 +6025,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5631437196618962459, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
   m_PrefabInstance: {fileID: 700207547}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
 --- !u!4 &332522684 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 958601880931523665, guid: eba663b7e63a94c698c4c9a0967d2650, type: 3}
@@ -10539,19 +10546,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9055388195990018994, guid: 9a73e35c72b3e4ebf9286aa0cc0548a0, type: 3}
   m_PrefabInstance: {fileID: 1653174061}
   m_PrefabAsset: {fileID: 0}
-=======
---- !u!114 &461167466 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4091248066723436992, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
-  m_PrefabInstance: {fileID: 700207547}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2296d40ccfd584c35a01a53e42b4655b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
->>>>>>> Stashed changes
 --- !u!114 &501149530 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5692756683397493771, guid: 91476eadcf7394262b27eed48b9adb5f, type: 3}
@@ -11029,7 +11023,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
-  - component: {fileID: 519420034}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -11126,7 +11119,6 @@ MonoBehaviour:
   target: {fileID: 330867962}
   offset: {x: 0, y: 0, z: -10}
   followTime: 0.5
-<<<<<<< Updated upstream
 --- !u!1001 &520408249
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14281,15 +14273,10 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: eba663b7e63a94c698c4c9a0967d2650, type: 3}
 --- !u!1 &679828026
 GameObject:
-=======
---- !u!114 &519420034
-MonoBehaviour:
->>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< Updated upstream
   serializedVersion: 6
   m_Component:
   - component: {fileID: 679828027}
@@ -15089,20 +15076,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a73e35c72b3e4ebf9286aa0cc0548a0, type: 3}
-=======
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0cd151cc310a4cdab9a3594b1bbcf87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sixPackFish: {fileID: 1954614085}
-  turtle: {fileID: 1272850936}
-  cod: {fileID: 501149530}
-  sadFish: {fileID: 1617305213}
-  pm: {fileID: 461167466}
-  currentStage: 0
->>>>>>> Stashed changes
 --- !u!1001 &700207547
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15181,11 +15154,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5631437196618962459, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 74.4
+      value: 71.4
       objectReference: {fileID: 0}
     - target: {fileID: 5631437196618962459, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.8
+      value: 16.1
       objectReference: {fileID: 0}
     - target: {fileID: 5631437196618962459, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -18565,10 +18538,6 @@ PrefabInstance:
       propertyPath: helpDialouge
       value: 
       objectReference: {fileID: 946483023}
-    - target: {fileID: 5692756683397493771, guid: 91476eadcf7394262b27eed48b9adb5f, type: 3}
-      propertyPath: textOffset.y
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 5692756683397493771, guid: 91476eadcf7394262b27eed48b9adb5f, type: 3}
       propertyPath: firstDialouge
       value: 
@@ -40635,11 +40604,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3747441397093738351, guid: 91476eadcf7394262b27eed48b9adb5f, type: 3}
       propertyPath: m_Name
-<<<<<<< Updated upstream
       value: SuicideFish
-=======
-      value: cod
->>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 3747441397093738351, guid: 91476eadcf7394262b27eed48b9adb5f, type: 3}
       propertyPath: m_IsActive
