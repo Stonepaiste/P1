@@ -45,21 +45,13 @@ public class PlayerMovementFisk : MonoBehaviour
             }
         }
         else
-        {
             animator.SetBool("IsWalking", false);
-<<<<<<< HEAD
-=======
-        }
->>>>>>> parent of bd380dc (cod fixed)
     }
 
     private void FixedUpdate() //fixed update er bedre til movement da den sætter en fast movement på trods af FPS og CPU power
     {
-<<<<<<< HEAD
+
         if (canMove)             //kan kun bevæge sig hvis canMove er true, bruges til at stoppe spiller når man snakker med npc
-=======
-        if(canMove)
->>>>>>> parent of bd380dc (cod fixed)
             Fiskekrop.AddForce(movement * speed);
     }
 

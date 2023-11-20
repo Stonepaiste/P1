@@ -7,7 +7,7 @@ using System;
 public class NPCDialoge : MonoBehaviour
 {
     private Camera mainCam;                          //Camera
-<<<<<<< HEAD
+
     private PlayerMovementFisk pm;                   //spillerens script
     private Animator anim;                           //animatoren på npc
         
@@ -15,28 +15,19 @@ public class NPCDialoge : MonoBehaviour
 
     [Header("State")]
     public state currentState = state.firstmeeting;
-=======
+
     [SerializeField] private Vector3 textOffset;     //offset hvor tekst skal placere sig ift. npc'en selv
 
->>>>>>> parent of bd380dc (cod fixed)
+
     public enum state { firstmeeting, help, thankyou, dead, follow }
-    public state currentState = state.firstmeeting;
 
-    [SerializeField] private float waitToMoveSoren = 5;
-    [SerializeField] private float moveInstant = 0;
+    [SerializeField] private float waitToMove = 5;
 
-    [Header("Dialouge Textboxes")]
-<<<<<<< HEAD
-                                                     //objekter der indeholder dialogtekst
-    [SerializeField] private Vector3 textOffset;     //offset hvor tekst skal placere sig ift. npc'en selv
-=======
-    //objekter der indeholder dialogtekst
->>>>>>> parent of bd380dc (cod fixed)
+    [Header("dialouge boxes")]
     [SerializeField]private GameObject firstDialouge;
     [SerializeField]private GameObject helpDialouge;
     [SerializeField]private GameObject thankyouDialouge;
     [SerializeField]private GameObject pressToTalk;      //objekt der indeholder press m tekst
-    private Animator anim;
 
     [HideInInspector]public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
 
@@ -97,7 +88,7 @@ public class NPCDialoge : MonoBehaviour
             pressToTalk.SetActive(false);
 
             if(currentState == NPCDialoge.state.firstmeeting)
-                StartCoroutine(WaitToMove(waitToMoveSoren));
+                StartCoroutine(WaitToMove(waitToMove));
 
 
             switch (currentState)
