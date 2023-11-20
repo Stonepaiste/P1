@@ -9,9 +9,9 @@ public class NPCDialoge : MonoBehaviour
     
     [HideInInspector]public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
     private Camera mainCam;                          //Camera
-    private PlayerMovementFisk pm;
-    private Animator anim;
-
+    private PlayerMovementFisk pm;                   //spillerens script
+    private Animator anim;                           //animatoren på npc
+        
     [SerializeField] private float waitToMoveTime = 5;
 
     [Header("State")]
@@ -19,7 +19,7 @@ public class NPCDialoge : MonoBehaviour
     public enum state { firstmeeting, help, thankyou, dead, follow }
 
     [Header("Dialouge Textboxes")]
-    //objekter der indeholder dialogtekst
+                                                     //objekter der indeholder dialogtekst
     [SerializeField] private Vector3 textOffset;     //offset hvor tekst skal placere sig ift. npc'en selv
     [SerializeField]private GameObject firstDialouge;
     [SerializeField]private GameObject helpDialouge;

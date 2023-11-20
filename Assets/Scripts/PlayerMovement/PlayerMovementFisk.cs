@@ -46,12 +46,11 @@ public class PlayerMovementFisk : MonoBehaviour
         }
         else
             animator.SetBool("IsWalking", false);
-        
     }
 
     private void FixedUpdate() //fixed update er bedre til movement da den sætter en fast movement på trods af FPS og CPU power
     {
-        if(canMove)             //kan kun bevæge sig hvis canMove er true, bruges til at stoppe spiller når man snakker med npc
+        if (canMove)             //kan kun bevæge sig hvis canMove er true, bruges til at stoppe spiller når man snakker med npc
             Fiskekrop.AddForce(movement * speed);
     }
 
