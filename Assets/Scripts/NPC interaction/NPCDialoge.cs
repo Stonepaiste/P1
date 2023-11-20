@@ -7,11 +7,9 @@ using System;
 public class NPCDialoge : MonoBehaviour
 {
     private Camera mainCam;                          //Camera
-
     private PlayerMovementFisk pm;                   //spillerens script
     private Animator anim;                           //animatoren på npc
         
-    [SerializeField] private float waitToMoveTime = 5;
 
     [Header("State")]
     public state currentState = state.firstmeeting;
@@ -21,7 +19,7 @@ public class NPCDialoge : MonoBehaviour
 
     public enum state { firstmeeting, help, thankyou, dead, follow }
 
-    [SerializeField] private float waitToMove = 5;
+    [SerializeField] private float waitToMoveTime = 5;
 
     [Header("dialouge boxes")]
     [SerializeField]private GameObject firstDialouge;
@@ -35,6 +33,9 @@ public class NPCDialoge : MonoBehaviour
     {
         mainCam = Camera.main;                      //henter kamera
         anim = GetComponent<Animator>();
+        pm = FindAnyObjectByType<PlayerMovementFisk>();
+
+
 
         //Sætter de rigtige parametre til false når spillet starter
         detectPlayer = false;
@@ -87,9 +88,12 @@ public class NPCDialoge : MonoBehaviour
         {
             pressToTalk.SetActive(false);
 
-            if(currentState == NPCDialoge.state.firstmeeting)
-                StartCoroutine(WaitToMove(waitToMove));
-
+            if (currentState != state.dead)
+            {
+                StartCoroutine(WaitToMove(waitToMoveTime));
+                pm.canMove = false;
+                pm.canTalk = false;
+            }
 
             switch (currentState)
             {
@@ -127,10 +131,11 @@ public class NPCDialoge : MonoBehaviour
     private IEnumerator WaitToMove(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        PlayerMovementFisk pm = GameObject.FindAnyObjectByType<PlayerMovementFisk>();
+
+        if (gameObject.name == "Cod")
+            currentState = state.dead;
+
         pm.canMove = true;
         pm.canTalk = true;
-
     }
-
 }

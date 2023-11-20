@@ -10551,7 +10551,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5692756683397493771, guid: 91476eadcf7394262b27eed48b9adb5f, type: 3}
   m_PrefabInstance: {fileID: 1944676790}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 611055354}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3c5b2090c1af48eeb126799ce10c21b, type: 3}
@@ -13046,6 +13046,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9a73e35c72b3e4ebf9286aa0cc0548a0, type: 3}
+--- !u!1 &611055354 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3747441397093738351, guid: 91476eadcf7394262b27eed48b9adb5f, type: 3}
+  m_PrefabInstance: {fileID: 1944676790}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &613733776 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4977114211549907969, guid: 9305a0e56bf274aa7994172029339c38, type: 3}
@@ -15116,6 +15121,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 4091248066723436992, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
+      propertyPath: cod
+      value: 
+      objectReference: {fileID: 501149530}
     - target: {fileID: 4091248066723436992, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
       propertyPath: turtle
       value: 
@@ -24315,6 +24324,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5691953453716915809, guid: 91476eadcf7394262b27eed48b9adb5f, type: 3}
   m_PrefabInstance: {fileID: 1944676790}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1153311026
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 611055354}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: af74bd45102c4424e9216a8ab7a6f01d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1159440783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40604,7 +40634,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3747441397093738351, guid: 91476eadcf7394262b27eed48b9adb5f, type: 3}
       propertyPath: m_Name
-      value: SuicideFish
+      value: Cod
       objectReference: {fileID: 0}
     - target: {fileID: 3747441397093738351, guid: 91476eadcf7394262b27eed48b9adb5f, type: 3}
       propertyPath: m_IsActive
@@ -40716,7 +40746,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5691953453716915809, guid: 91476eadcf7394262b27eed48b9adb5f, type: 3}
       insertIndex: -1
       addedObject: {fileID: 917554503}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3747441397093738351, guid: 91476eadcf7394262b27eed48b9adb5f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1153311026}
   m_SourcePrefab: {fileID: 100100000, guid: 91476eadcf7394262b27eed48b9adb5f, type: 3}
 --- !u!1001 &1945764823
 PrefabInstance:
