@@ -45,12 +45,20 @@ public class PlayerMovementFisk : MonoBehaviour
             }
         }
         else
+        {
             animator.SetBool("IsWalking", false);
+
+        }
+
     }
 
     private void FixedUpdate() //fixed update er bedre til movement da den sætter en fast movement på trods af FPS og CPU power
     {
+
         if (canMove)             //kan kun bevæge sig hvis canMove er true, bruges til at stoppe spiller når man snakker med npc
+
+        if(canMove)
+
             Fiskekrop.AddForce(movement * speed);
     }
 
@@ -59,11 +67,20 @@ public class PlayerMovementFisk : MonoBehaviour
         //Hvis vores input til at snakke bliver triggered, kalder den snakke action i npc scriptet
         if (talkAction.triggered && canTalk)
         {
+            canMove = false;
+            canTalk = false;
+
             if(turtle != null)
                 turtle.Talk();
 
             if(cod != null)
+            {
                 cod.Talk();
+                if(cod.currentState == NPCDialoge.state.help)
+                {
+                    cod.currentState = NPCDialoge.state.dead;
+                }
+            }
 
             if(sixpackFish != null)
                 sixpackFish.Talk();

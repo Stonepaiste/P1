@@ -6,9 +6,8 @@ using System;
 
 public class NPCDialoge : MonoBehaviour
 {
-    
-    [HideInInspector]public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
     private Camera mainCam;                          //Camera
+
     private PlayerMovementFisk pm;                   //spillerens script
     private Animator anim;                           //animatoren på npc
         
@@ -16,22 +15,31 @@ public class NPCDialoge : MonoBehaviour
 
     [Header("State")]
     public state currentState = state.firstmeeting;
+
+    [SerializeField] private Vector3 textOffset;     //offset hvor tekst skal placere sig ift. npc'en selv
+
     public enum state { firstmeeting, help, thankyou, dead, follow }
 
+    [SerializeField] private float waitToMoveSoren = 5;
+    [SerializeField] private float moveInstant = 0;
+
     [Header("Dialouge Textboxes")]
+
                                                      //objekter der indeholder dialogtekst
-    [SerializeField] private Vector3 textOffset;     //offset hvor tekst skal placere sig ift. npc'en selv
+
+    //objekter der indeholder dialogtekst
+
     [SerializeField]private GameObject firstDialouge;
     [SerializeField]private GameObject helpDialouge;
     [SerializeField]private GameObject thankyouDialouge;
     [SerializeField]private GameObject pressToTalk;      //objekt der indeholder press m tekst
 
+    [HideInInspector]public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
 
     private void Start()
     {
         mainCam = Camera.main;                      //henter kamera
         anim = GetComponent<Animator>();
-        pm = FindAnyObjectByType<PlayerMovementFisk>();
 
         //Sætter de rigtige parametre til false når spillet starter
         detectPlayer = false;
@@ -46,7 +54,6 @@ public class NPCDialoge : MonoBehaviour
         //Siger til tekstbokse at de skal placere sig ved npc'ens position + det givne offset
         PlaceText();
     }
-
 
     private void OnTriggerEnter2D(Collider2D other)
     //Hvis spilleren kommer ind i collideren bliver bool sat til true og press m tekst aktiveret
@@ -85,13 +92,10 @@ public class NPCDialoge : MonoBehaviour
         {
             pressToTalk.SetActive(false);
 
-            if(currentState != state.dead)
-            {
-                StartCoroutine(WaitToMove(waitToMoveTime));
-                pm.canMove = false;
-                pm.canTalk = false;
-            }
-            
+            if(currentState == NPCDialoge.state.firstmeeting)
+                StartCoroutine(WaitToMove(waitToMoveSoren));
+
+
             switch (currentState)
             {
                 case state.firstmeeting:
@@ -115,6 +119,7 @@ public class NPCDialoge : MonoBehaviour
 
                 case state.dead:
                     anim.SetTrigger("dead");
+
                     break;
 
                 case state.follow:
@@ -127,10 +132,7 @@ public class NPCDialoge : MonoBehaviour
     private IEnumerator WaitToMove(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
-        
-        if(gameObject.name == "cod")
-            currentState = state.dead;
-
+        PlayerMovementFisk pm = GameObject.FindAnyObjectByType<PlayerMovementFisk>();
         pm.canMove = true;
         pm.canTalk = true;
 
