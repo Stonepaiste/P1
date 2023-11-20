@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public NPCDialoge sixPackFish;
     public NPCDialoge turtle;
-    public NPCDialoge cod;
+    public NPCDialoge soren;
     public NPCDialoge sadFish;
 
     public PlayerMovementFisk pm;
@@ -23,11 +23,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (cod.currentState == NPCDialoge.state.dead)
-        {
+        if (soren.currentState == NPCDialoge.state.dead)
             currentStage = gameStage.stage2;
-            Debug.Log(currentStage);
-        }
+
+       
 
         switch (currentStage)
         {
