@@ -117,11 +117,15 @@ public class TurtleNPC : MonoBehaviour
                     secondDialouge.SetActive(true);
                     secondDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     GameManager.instance.currentStage = GameManager.gameStage.stage3;
+                    GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
+                    GameManager.instance.currentCoralStage++;
+                    GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
                     break;
 
                 case state.third:
                     thirdDialouge.SetActive(true);
                     thirdDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                    //DØD
                     break;
             }
         }

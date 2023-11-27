@@ -118,6 +118,11 @@ public class SixpackFish : MonoBehaviour
                 case state.firstmeeting:
                     firstDialouge.SetActive(true);
                     firstDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                    GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
+                    GameManager.instance.currentCoralStage++;
+                    GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
+                    GameManager.instance.currentStage = GameManager.gameStage.stage4;
+                    currentState = state.help;
                     break;
 
                 case state.help:
@@ -140,6 +145,8 @@ public class SixpackFish : MonoBehaviour
 
         if (GameManager.instance.currentStage == GameManager.gameStage.stage6)
             GameManager.instance.currentStage = GameManager.gameStage.stage7;
+
+        
 
         pm.canMove = true;
         pm.canTalk = true;
