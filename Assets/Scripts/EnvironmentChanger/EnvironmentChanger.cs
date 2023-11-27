@@ -9,10 +9,8 @@ public class EnvironmentChanger : MonoBehaviour
     public List<GameObject> objectsToShow; // Object referece til det objekt/objekter der skal vises
     public int maxStages = 3; //antal stages
 
-    public Transform specificSide; // hvilken side af collideren der skal checke efter trigger
-    public bool checkRight;
-    public bool checkDown;
-    private int currentStage = 0; // start på nul for at vise at den første stage er aktiv
+    public int currentStage = 0; // start på nul for at vise at den første stage er aktiv
+    /*
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -76,8 +74,8 @@ public class EnvironmentChanger : MonoBehaviour
         }
 
     }
-
-    private void ActivateObjectsForStage(int stage)
+    */
+    public void ActivateObjectsForStage(int stage)
     {
         // Activate objekter fra den stage vi er kommet til.
         if (stage < objectsToShow.Count)
@@ -86,7 +84,7 @@ public class EnvironmentChanger : MonoBehaviour
         }
     }
 
-    private void DeactivateObjectsForStage(int stage)
+    public void DeactivateObjectsForStage(int stage)
     {
         // Activate objekter fra den stage vi er kommet til.
         if (stage < objectsToShow.Count)
@@ -94,6 +92,8 @@ public class EnvironmentChanger : MonoBehaviour
             objectsToShow[stage].SetActive(false);
         }
     }
+
+    
 
 }
 

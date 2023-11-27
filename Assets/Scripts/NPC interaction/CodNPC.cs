@@ -101,6 +101,9 @@ public class CodNPC : MonoBehaviour
         
         currentState = state.dead;
         GameManager.instance.currentStage = GameManager.gameStage.stage2;
+        GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
+        GameManager.instance.currentCoralStage++;
+        GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
         
         pm.canMove = true;
         pm.canTalk = true;
