@@ -322,6 +322,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1.75
       objectReference: {fileID: 0}
+    - target: {fileID: 1079717219288256012, guid: 4eca8523066014acd8788c77176098da, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1776784071828856095, guid: 4eca8523066014acd8788c77176098da, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.06
@@ -329,6 +333,14 @@ PrefabInstance:
     - target: {fileID: 1776784071828856095, guid: 4eca8523066014acd8788c77176098da, type: 3}
       propertyPath: m_LocalPosition.y
       value: 1.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034935777156177230, guid: 4eca8523066014acd8788c77176098da, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2034935777156177230, guid: 4eca8523066014acd8788c77176098da, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1327112303
       objectReference: {fileID: 0}
     - target: {fileID: 2097710881602650783, guid: 4eca8523066014acd8788c77176098da, type: 3}
       propertyPath: m_LocalPosition.x
@@ -370,6 +382,58 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4318110061003694383, guid: 4eca8523066014acd8788c77176098da, type: 3}
+      propertyPath: trash.Array.size
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4318110061003694383, guid: 4eca8523066014acd8788c77176098da, type: 3}
+      propertyPath: trash.Array.data[0]
+      value: 
+      objectReference: {fileID: 3721507381989832393, guid: 273bc3a6e6490402c93e5d9443912bcc, type: 3}
+    - target: {fileID: 4318110061003694383, guid: 4eca8523066014acd8788c77176098da, type: 3}
+      propertyPath: trash.Array.data[1]
+      value: 
+      objectReference: {fileID: 4918338190404266429, guid: 6b4a9fa5895354e46aafaf40c3048685, type: 3}
+    - target: {fileID: 4318110061003694383, guid: 4eca8523066014acd8788c77176098da, type: 3}
+      propertyPath: trash.Array.data[2]
+      value: 
+      objectReference: {fileID: 2736860088403138155, guid: 7a24de98a72d848e99efcae4f638e2de, type: 3}
+    - target: {fileID: 4318110061003694383, guid: 4eca8523066014acd8788c77176098da, type: 3}
+      propertyPath: trash.Array.data[3]
+      value: 
+      objectReference: {fileID: 2775704015670533374, guid: 9485ed1e2a83d45c18e286d70ab81311, type: 3}
+    - target: {fileID: 4318110061003694383, guid: 4eca8523066014acd8788c77176098da, type: 3}
+      propertyPath: trash.Array.data[4]
+      value: 
+      objectReference: {fileID: 735448196024814963, guid: 780fa53f94c2d184abaf8fd3ad093fe5, type: 3}
+    - target: {fileID: 4318110061003694383, guid: 4eca8523066014acd8788c77176098da, type: 3}
+      propertyPath: trash.Array.data[5]
+      value: 
+      objectReference: {fileID: 3028549758198603289, guid: f301f16779ad5401681901c447999252, type: 3}
+    - target: {fileID: 4318110061003694383, guid: 4eca8523066014acd8788c77176098da, type: 3}
+      propertyPath: trash.Array.data[6]
+      value: 
+      objectReference: {fileID: 5111582791368124851, guid: 53a030d9e1cbc4518b0fd0243f20669d, type: 3}
+    - target: {fileID: 4318110061003694383, guid: 4eca8523066014acd8788c77176098da, type: 3}
+      propertyPath: trash.Array.data[7]
+      value: 
+      objectReference: {fileID: 249151787170802339, guid: 229943af4513344489551c45f8c4643e, type: 3}
+    - target: {fileID: 4318110061003694383, guid: 4eca8523066014acd8788c77176098da, type: 3}
+      propertyPath: trash.Array.data[8]
+      value: 
+      objectReference: {fileID: 4113541121767846090, guid: fd2756465a980c648a6ebf697c9bb47d, type: 3}
+    - target: {fileID: 4318110061003694383, guid: 4eca8523066014acd8788c77176098da, type: 3}
+      propertyPath: trash.Array.data[9]
+      value: 
+      objectReference: {fileID: 2147311267964540361, guid: aee9f8788b8baf240bf75eedbdbc02cf, type: 3}
+    - target: {fileID: 4318110061003694383, guid: 4eca8523066014acd8788c77176098da, type: 3}
+      propertyPath: trash.Array.data[10]
+      value: 
+      objectReference: {fileID: 6501544518197027382, guid: cd0ac26e3e92240b980d73bca33c73f7, type: 3}
+    - target: {fileID: 4318110061003694383, guid: 4eca8523066014acd8788c77176098da, type: 3}
+      propertyPath: trash.Array.data[11]
+      value: 
+      objectReference: {fileID: 1751266275128340066, guid: feb2a4bfea9df4746b2d297d6139eb8f, type: 3}
     - target: {fileID: 4345047863973616899, guid: 4eca8523066014acd8788c77176098da, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.0202
