@@ -9,7 +9,6 @@ public class spawning : MonoBehaviour
     public float spawnMostWait;
     public float spawnLeastWait;
 
-    int randTrash;
     private void Start()
     {
         StartCoroutine(StartTrash());
