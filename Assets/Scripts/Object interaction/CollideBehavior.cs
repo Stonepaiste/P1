@@ -12,7 +12,6 @@ public class CollideBehavior : MonoBehaviour
     {
         if (other.gameObject.name == "KarstenKrabbe")
         {
-            Destroy(other.gameObject); // Destroy the collided Trash object
             karstenIsHere = true;
         }
         else if (other.gameObject.name == "sixpackfish" && karstenIsHere)
