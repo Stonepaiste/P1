@@ -9,7 +9,6 @@ public class spawning : MonoBehaviour
     public float spawnMostWait;
     public float spawnLeastWait;
 
-    int randTrash;
     private void Start()
     {
         StartCoroutine(StartTrash());
@@ -18,12 +17,11 @@ public class spawning : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator StartTrash()
     {
-            while (true)
-            {
-                SpawnTrash();
-                yield return new WaitForSeconds(Random.Range(spawnLeastWait, spawnMostWait));
-            }
-        
+        while (true)
+        {
+            SpawnTrash();
+            yield return new WaitForSeconds(Random.Range(spawnLeastWait, spawnMostWait));
+        }
     }
 
     private void SpawnTrash()

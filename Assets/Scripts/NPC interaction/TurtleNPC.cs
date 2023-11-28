@@ -123,6 +123,7 @@ public class TurtleNPC : MonoBehaviour
                     break;
 
                 case state.third:
+                    secondDialouge.SetActive(false);
                     thirdDialouge.SetActive(true);
                     thirdDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     //DØD
