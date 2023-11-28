@@ -7,7 +7,7 @@ public class PlayerMovementFisk : MonoBehaviour
 {
     private Vector2 movement; // Kalder Vector2 info og gemmer dem i memory som "movement"
     private Rigidbody2D Fiskekrop; // kalder ridigbofy classen og gemmer den som "fiskekrop"
-    [SerializeField] private int speed = 5; // SerializeField gør at access modifieren er sat til private men at vi stadig kan se values i unity
+    public int speed = 5; // SerializeField gør at access modifieren er sat til private men at vi stadig kan se values i unity
 
     //Referer til input systemet
     private InputAction talkAction; //specifikke talk actions
@@ -16,8 +16,6 @@ public class PlayerMovementFisk : MonoBehaviour
     [SerializeField] private SixpackFish sixpackFish; //reference til dialogscript
     [SerializeField] private CodNPC cod; //reference til dialogscript
     [SerializeField] private KarstenNPC krabbe; //reference til dialogscript
-
-    //[SerializeField] private NPCDialoge sadfish; //reference til dialogscript
 
     public bool canMove;
     public bool canTalk;
@@ -73,9 +71,6 @@ public class PlayerMovementFisk : MonoBehaviour
 
             if (krabbe != null)
                 krabbe.Talk();
-
-            //if(sadfish != null)
-           //     sadfish.Talk();
             
         }
     }

@@ -124,11 +124,12 @@ public class SixpackFish : MonoBehaviour
                     GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
                     GameManager.instance.currentStage = GameManager.gameStage.stage4;
                     currentState = state.help;
+                    containerTrash.SetActive(true);
                     break;
 
                 case state.help:
+                    firstDialouge.SetActive(false);
                     secondDialouge.SetActive(true);
-                    containerTrash.SetActive(true);
                     secondDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     break;
 

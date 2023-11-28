@@ -9,11 +9,14 @@ public class KarstenNPC : MonoBehaviour
     private Camera mainCam;                          //Camera
     private PlayerMovementFisk pm;                   //spillerens script
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
+    private Animator anim;
 
     [SerializeField] private float waitToMoveTime = 5;
     public int trashNeeded = 10;
     public DestroyTrashContainer container;
     public bool followPlayer;
+    public float speed = 4;
+    public float distanceToPlayer = 2;
 
     [Header("State")]
     public state currentState = state.firstmeeting;
@@ -33,6 +36,7 @@ public class KarstenNPC : MonoBehaviour
     {
         mainCam = Camera.main;                      //henter kamera
         pm = FindAnyObjectByType<PlayerMovementFisk>();
+        anim = GetComponent<Animator>();
 
         //Sætter de rigtige parametre til false når spillet starter
         detectPlayer = false;
@@ -118,6 +122,8 @@ public class KarstenNPC : MonoBehaviour
             pm.canMove = false;
             pm.canTalk = false;
 
+            if (container.trashcollected > trashNeeded)
+                followPlayer = true;
 
             switch (currentState)
             {
@@ -160,8 +166,8 @@ public class KarstenNPC : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
 
-        if (container.trashcollected > trashNeeded)
-            followPlayer = true;
+        if (GameManager.instance.currentStage == GameManager.gameStage.stage4)
+            GameManager.instance.currentStage = GameManager.gameStage.stage5;
 
         pm.canMove = true;
         pm.canTalk = true;
@@ -169,10 +175,19 @@ public class KarstenNPC : MonoBehaviour
 
     private void Follow()
     {
+        var crabSpeed = speed * Time.deltaTime;
         if(followPlayer == true)
         {
-            //Follow
-            Debug.Log("FOLLOWING");
+            bool isMoving = false;
+
+            if(Vector3.Distance(transform.position, pm.transform.position) > distanceToPlayer)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, pm.transform.position, crabSpeed);
+                isMoving = true;
+            }
+
+            anim.SetBool("IsMoving", isMoving);
+
         }
     }
 }

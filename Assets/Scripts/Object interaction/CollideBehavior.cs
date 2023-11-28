@@ -5,23 +5,21 @@ using UnityEngine;
 
 public class CollideBehavior : MonoBehaviour
 {
-    public bool HasBottleTrash;
-    public bool HasOilBarrelTrash;
+    public bool karstenIsHere;
+    public GameObject savedFish;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "Angel")
+        if (other.gameObject.name == "KarstenKrabbe")
         {
-            Debug.Log("Trash collision");
             Destroy(other.gameObject); // Destroy the collided Trash object
-            HasBottleTrash = true;
-
+            karstenIsHere = true;
         }
-        else if (other.gameObject.name == "Clow" && HasBottleTrash)
+        else if (other.gameObject.name == "sixpackfish" && karstenIsHere)
         {
-            Debug.Log("Quest collision");
-            HasBottleTrash = false;
-
+            karstenIsHere = false;
+            other.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            savedFish.SetActive(true);
         }
     }
 }
