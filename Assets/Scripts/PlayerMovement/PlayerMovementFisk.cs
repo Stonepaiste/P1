@@ -15,6 +15,8 @@ public class PlayerMovementFisk : MonoBehaviour
     [SerializeField] private TurtleNPC turtle; //reference til dialogscript
     [SerializeField] private SixpackFish sixpackFish; //reference til dialogscript
     [SerializeField] private CodNPC cod; //reference til dialogscript
+    [SerializeField] private KarstenNPC krabbe; //reference til dialogscript
+
     //[SerializeField] private NPCDialoge sadfish; //reference til dialogscript
 
     public bool canMove;
@@ -68,6 +70,9 @@ public class PlayerMovementFisk : MonoBehaviour
             
             if(sixpackFish != null)
                 sixpackFish.Talk();
+
+            if (krabbe != null)
+                krabbe.Talk();
 
             //if(sadfish != null)
            //     sadfish.Talk();
