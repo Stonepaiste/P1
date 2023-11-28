@@ -10,6 +10,7 @@ public class SixpackFish : MonoBehaviour
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
 
     [SerializeField] private float waitToMoveTime = 5;
+    public GameObject containerTrash;
 
     [Header("State")]
     public state currentState = state.firstmeeting;
@@ -127,6 +128,7 @@ public class SixpackFish : MonoBehaviour
 
                 case state.help:
                     secondDialouge.SetActive(true);
+                    containerTrash.SetActive(true);
                     secondDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     break;
 

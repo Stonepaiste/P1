@@ -10,14 +10,14 @@ public class CollideBehavior : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "Flaske_Prop")
+        if (other.gameObject.name == "Angel")
         {
             Debug.Log("Trash collision");
             Destroy(other.gameObject); // Destroy the collided Trash object
             HasBottleTrash = true;
 
         }
-        else if (other.gameObject.name == "Quest1" && HasBottleTrash)
+        else if (other.gameObject.name == "Clow" && HasBottleTrash)
 
         {
             Debug.Log("Quest collision");
