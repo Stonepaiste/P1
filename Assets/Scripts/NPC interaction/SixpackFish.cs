@@ -11,6 +11,7 @@ public class SixpackFish : MonoBehaviour
 
     [SerializeField] private float waitToMoveTime = 5;
     public GameObject containerTrash;
+    public Animator runAnim;
 
     [Header("State")]
     public state currentState = state.firstmeeting;
@@ -137,6 +138,7 @@ public class SixpackFish : MonoBehaviour
                 case state.saved:
                     thirdDialouge.SetActive(true);
                     thirdDialouge.GetComponent<Animator>().SetTrigger("Animate");
+
                     break;
 
             }
@@ -147,9 +149,11 @@ public class SixpackFish : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
 
-        if (GameManager.instance.currentStage == GameManager.gameStage.stage6)
-            GameManager.instance.currentStage = GameManager.gameStage.stage7;
-        
+        if(currentState == state.saved)
+        {
+            runAnim.SetTrigger("Swim");
+        }
+
         pm.canMove = true;
         pm.canTalk = true;
     }

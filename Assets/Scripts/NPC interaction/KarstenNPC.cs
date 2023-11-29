@@ -12,6 +12,8 @@ public class KarstenNPC : MonoBehaviour
     private SixpackFish sixpackFish;
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
     private Animator anim;
+    public GameObject savedFish;
+
 
     [SerializeField] private float waitToMoveTime = 5;
     public int trashNeeded = 10;
@@ -88,6 +90,12 @@ public class KarstenNPC : MonoBehaviour
             detectPlayer = true;
             pressToTalk.SetActive(true);
         }
+        if (other.CompareTag("Sixpackfish"))
+        {
+            other.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            savedFish.SetActive(true);
+            sixpackFish.currentState = SixpackFish.state.saved;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -140,6 +148,9 @@ public class KarstenNPC : MonoBehaviour
                     //Sige hjælp med skrald
                     helpWithTrash.SetActive(true);
                     helpWithTrash.GetComponent<Animator>().SetTrigger("Animate");
+                    GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
+                    GameManager.instance.currentCoralStage++;
+                    GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
                     GameManager.instance.currentStage = GameManager.gameStage.stage5;
                     currentState = state.follow;
                     break;
