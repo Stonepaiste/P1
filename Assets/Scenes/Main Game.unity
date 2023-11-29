@@ -854,7 +854,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.6, y: -36, z: -10}
+  m_LocalPosition: {x: 55.2, y: 19, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1781,7 +1781,7 @@ MonoBehaviour:
   - {fileID: 4547460247049280232}
   - {fileID: 4732036617382734791}
   - {fileID: 8613770166734242051}
-  - {fileID: 4470933316664893334}
+  - {fileID: 0}
   currentCoralStage: 0
   previousCoralStage: 0
   currentStage: 0
@@ -4140,11 +4140,6 @@ RectTransform:
   m_AnchoredPosition: {x: 812, y: 337}
   m_SizeDelta: {x: 172.4888, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &4470933316664893334 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4470933316554130415, guid: 4eca8523066014acd8788c77176098da, type: 3}
-  m_PrefabInstance: {fileID: 166599801}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4547460247049280232 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4547460246896576145, guid: 4eca8523066014acd8788c77176098da, type: 3}
