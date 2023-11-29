@@ -73,6 +73,7 @@ public class SixpackFish : MonoBehaviour
             detectPlayer = true;
             pressToTalk.SetActive(true);
         }
+       
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -148,9 +149,7 @@ public class SixpackFish : MonoBehaviour
 
         if (GameManager.instance.currentStage == GameManager.gameStage.stage6)
             GameManager.instance.currentStage = GameManager.gameStage.stage7;
-
         
-
         pm.canMove = true;
         pm.canTalk = true;
     }

@@ -3039,7 +3039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1814802066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3614,9 +3614,11 @@ GameObject:
   - component: {fileID: 3415428266598232044}
   - component: {fileID: 7581736076075818011}
   - component: {fileID: 7581736076075818012}
+  - component: {fileID: 7581736076075818013}
+  - component: {fileID: 7581736076075818014}
   m_Layer: 0
   m_Name: KarstenKrabbe
-  m_TagString: Untagged
+  m_TagString: Karsten
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3848,7 +3850,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 5.128912, y: 2.1849804}
+  m_Offset: {x: 4.045347, y: 1.9873009}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3859,7 +3861,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 23.844326, y: 19.23862}
+  m_Size: {x: 26.011456, y: 18.843267}
   m_EdgeRadius: 0
 --- !u!114 &3668117268386053540
 MonoBehaviour:
@@ -3917,7 +3919,7 @@ GameObject:
   - component: {fileID: 1954614089}
   m_Layer: 0
   m_Name: sixpackfish
-  m_TagString: Untagged
+  m_TagString: Sixpackfish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5617,7 +5619,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectPlayer: 0
   waitToMoveTime: 1
-  trashNeeded: 7
+  trashNeeded: 3
   container: {fileID: 412173010}
   followPlayer: 0
   speed: 4
@@ -5630,6 +5632,46 @@ MonoBehaviour:
   thankyouDialouge: {fileID: 2206555456755454593}
   finishedDialouge: {fileID: 1386033259}
   pressToTalk: {fileID: 8317132455758275290}
+--- !u!114 &7581736076075818013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586477025032959211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5d9cd6b70e54361bd92db4ed24aa64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  savedFish: {fileID: 1823125019}
+--- !u!50 &7581736076075818014
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586477025032959211}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7672676898213970238
 GameObject:
   m_ObjectHideFlags: 0
@@ -6275,7 +6317,7 @@ SpriteRenderer:
   m_SortingLayerID: -996976701
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8f288f952329c471aaaf8a2a58dbc370, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2da01bdd36468489b9c10cacf9cfde49, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6403,5 +6445,5 @@ SceneRoots:
   - {fileID: 1814802069}
   - {fileID: 1018305801}
   - {fileID: 135623538}
-  - {fileID: 1413207369}
   - {fileID: 6420291095741797861}
+  - {fileID: 1413207369}
