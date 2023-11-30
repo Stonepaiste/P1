@@ -6,7 +6,7 @@ using UnityEngine;
 public class CollideBehavior : MonoBehaviour
 {
     public bool karstenIsHere;
-    public GameObject savedFish;
+    public bool targetIsSixpackfish = false;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -17,8 +17,7 @@ public class CollideBehavior : MonoBehaviour
         else if (other.gameObject.name == "sixpackfish" && karstenIsHere)
         {
             karstenIsHere = false;
-            other.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            savedFish.SetActive(true);
+            targetIsSixpackfish = true;
         }
     }
 }

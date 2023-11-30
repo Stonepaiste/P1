@@ -8,8 +8,12 @@ public class KarstenNPC : MonoBehaviour
 {
     private Camera mainCam;                          //Camera
     private PlayerMovementFisk pm;                   //spillerens script
+    private CollideBehavior cb;
+    private SixpackFish sixpackFish;
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
     private Animator anim;
+    public GameObject savedFish;
+
 
     [SerializeField] private float waitToMoveTime = 5;
     public int trashNeeded = 10;
@@ -36,7 +40,9 @@ public class KarstenNPC : MonoBehaviour
     {
         mainCam = Camera.main;                      //henter kamera
         pm = FindAnyObjectByType<PlayerMovementFisk>();
+        cb = FindAnyObjectByType<CollideBehavior>();
         anim = GetComponent<Animator>();
+        sixpackFish = FindAnyObjectByType<SixpackFish>();
 
         //Sætter de rigtige parametre til false når spillet starter
         detectPlayer = false;
@@ -84,6 +90,12 @@ public class KarstenNPC : MonoBehaviour
             detectPlayer = true;
             pressToTalk.SetActive(true);
         }
+        if (other.CompareTag("Sixpackfish"))
+        {
+            other.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            savedFish.SetActive(true);
+            sixpackFish.currentState = SixpackFish.state.saved;
+        }
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -122,7 +134,7 @@ public class KarstenNPC : MonoBehaviour
             pm.canMove = false;
             pm.canTalk = false;
 
-            if (container.trashcollected > trashNeeded)
+            if (container.trashcollected >= trashNeeded)
                 followPlayer = true;
 
             switch (currentState)
@@ -136,11 +148,15 @@ public class KarstenNPC : MonoBehaviour
                     //Sige hjælp med skrald
                     helpWithTrash.SetActive(true);
                     helpWithTrash.GetComponent<Animator>().SetTrigger("Animate");
+                    GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
+                    GameManager.instance.currentCoralStage++;
+                    GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
+                    GameManager.instance.currentStage = GameManager.gameStage.stage5;
                     currentState = state.follow;
                     break;
 
                 case state.follow:
-                    if(container.trashcollected > trashNeeded)
+                    if(container.trashcollected >= trashNeeded)
                     {
                         thankyouDialouge.SetActive(true);
                         thankyouDialouge.GetComponent<Animator>().SetTrigger("Animate");
@@ -180,14 +196,18 @@ public class KarstenNPC : MonoBehaviour
         {
             bool isMoving = false;
 
-            if(Vector3.Distance(transform.position, pm.transform.position) > distanceToPlayer)
+            if(Vector3.Distance(transform.position, pm.transform.position) > distanceToPlayer && cb.targetIsSixpackfish == false)
             {
                 transform.position = Vector3.MoveTowards(transform.position, pm.transform.position, crabSpeed);
                 isMoving = true;
             }
+            else if(Vector3.Distance(transform.position, sixpackFish.transform.position) > distanceToPlayer && cb.targetIsSixpackfish == true)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, sixpackFish.transform.position, crabSpeed);
+                isMoving = true;
+            }
 
             anim.SetBool("IsMoving", isMoving);
-
         }
     }
 }

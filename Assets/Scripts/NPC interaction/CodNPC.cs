@@ -89,7 +89,6 @@ public class CodNPC : MonoBehaviour
                     break;
 
                 case state.dead:
-                    anim.SetTrigger("dead");
                     break;
             }
         }
@@ -99,6 +98,7 @@ public class CodNPC : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         
+        anim.SetTrigger("dead");
         currentState = state.dead;
         GameManager.instance.currentStage = GameManager.gameStage.stage2;
         GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
