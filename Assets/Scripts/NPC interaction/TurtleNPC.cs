@@ -12,16 +12,19 @@ public class TurtleNPC : MonoBehaviour
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
 
     [SerializeField] private float waitToMoveTime = 5;
+    public GameObject deadTurtle;
 
     [Header("State")]
     public state currentState = state.firstmeeting;
-    public enum state { firstmeeting, second, third }
+    public enum state { firstmeeting, second, third, dead }
 
     [Header("dialouge boxes")]
     [SerializeField] private Vector3 textOffset;        //offset hvor tekst skal placere sig ift. npc'en selv
     [SerializeField] private GameObject firstDialouge;
     [SerializeField] private GameObject secondDialouge;
     [SerializeField] private GameObject thirdDialouge;
+    [SerializeField] private GameObject deadDialouge;
+
     [SerializeField] private GameObject pressToTalk;      //objekt der indeholder press m tekst
 
 
@@ -61,6 +64,12 @@ public class TurtleNPC : MonoBehaviour
             case GameManager.gameStage.stage3:
                 currentState = state.third;
                 break;
+
+            case GameManager.gameStage.stage6:
+                GetComponent<SpriteRenderer>().enabled = false;
+                deadTurtle.SetActive(true);
+                currentState = state.dead;
+                break;
         } 
     }
 
@@ -80,6 +89,7 @@ public class TurtleNPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             detectPlayer = false;
+            deadDialouge.SetActive(false);
             firstDialouge.SetActive(false);
             secondDialouge.SetActive(false);
             thirdDialouge.SetActive(false);
@@ -89,6 +99,7 @@ public class TurtleNPC : MonoBehaviour
 
     private void PlaceText()
     {
+        deadDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
         firstDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
         secondDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
         thirdDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
@@ -105,7 +116,6 @@ public class TurtleNPC : MonoBehaviour
             pm.canMove = false;
             pm.canTalk = false;
             
-
             switch (currentState)
             {
                 case state.firstmeeting:
@@ -127,6 +137,10 @@ public class TurtleNPC : MonoBehaviour
                     thirdDialouge.SetActive(true);
                     thirdDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     //DØD
+                    break;
+
+                case state.dead:
+                    deadDialouge.SetActive(true);
                     break;
             }
         }
