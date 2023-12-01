@@ -17,6 +17,8 @@ public class PlayerMovementFisk : MonoBehaviour
     [SerializeField] private CodNPC cod; //reference til dialogscript
     [SerializeField] private KarstenNPC krabbe; //reference til dialogscript
 
+    public AudioSource swimSound;
+
     public bool canMove;
     public bool canTalk;
 
@@ -54,10 +56,14 @@ public class PlayerMovementFisk : MonoBehaviour
                 animator.SetFloat("Horizontal", movement.x);
                 animator.SetFloat("Vertical", movement.y);
                 animator.SetBool("IsWalking", true);
+                swimSound.Play();
             }
         }
         else
+        {
             animator.SetBool("IsWalking", false);
+            swimSound.Stop();
+        }
 
     }
 
