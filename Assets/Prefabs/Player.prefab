@@ -164,6 +164,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 60
+  talkAction:
+    m_Name: Talk
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: b25551f6-27dd-4611-b0af-a6da367463ef
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   inputActions: {fileID: -944628639613478452, guid: c1d8542e6417d410a937870733afb290, type: 3}
   turtle: {fileID: 0}
   sixpackFish: {fileID: 0}
@@ -171,6 +180,10 @@ MonoBehaviour:
   krabbe: {fileID: 0}
   canMove: 0
   canTalk: 0
+  turtletalkaudio: 0
+  Sixpacktalkaudio: 0
+  codtalkaudio: 0
+  krabbetalkaudio: 0
 --- !u!114 &7429821852816394290
 MonoBehaviour:
   m_ObjectHideFlags: 0
