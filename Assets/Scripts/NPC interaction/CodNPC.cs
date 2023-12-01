@@ -88,21 +88,17 @@ public class CodNPC : MonoBehaviour
 
             if (currentState != state.dead)
             {
-                StartCoroutine(WaitToMove(waitToMoveTime));
-                pm.canMove = false;
-                pm.canTalk = false;
-            }
-
-            switch (currentState)
-            {
-                case state.firstmeeting:
-                    StartCoroutine(ActivateDialogueWithDelay());
-                    break;
-
-                case state.dead:
-                    break;
+                StartCoroutine(DialogueAndMove());
             }
         }
+    }
+
+    private IEnumerator DialogueAndMove()
+    {
+        yield return StartCoroutine(ActivateDialogueWithDelay());
+
+        // This line will only be executed after ActivateDialogueWithDelay is done
+        StartCoroutine(WaitToMove(waitToMoveTime));
     }
 
     private IEnumerator ActivateDialogueWithDelay()
@@ -113,8 +109,9 @@ public class CodNPC : MonoBehaviour
         {
             child.gameObject.SetActive(true);
             yield return new WaitForSeconds(DialougeDelay);
+            child.gameObject.SetActive(false);
         }
-        
+
         DeactivateDialogue();
     }
     
