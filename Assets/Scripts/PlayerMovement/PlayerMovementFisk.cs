@@ -10,7 +10,7 @@ public class PlayerMovementFisk : MonoBehaviour
     public int speed = 5; // SerializeField gør at access modifieren er sat til private men at vi stadig kan se values i unity
 
     //Referer til input systemet
-    public InputAction talkAction; //specifikke talk actions
+    [HideInInspector]public InputAction talkAction; //specifikke talk actions
     [SerializeField] private InputActionAsset inputActions; //Input action map
     [SerializeField] private TurtleNPC turtle; //reference til dialogscript
     [SerializeField] private SixpackFish sixpackFish; //reference til dialogscript
