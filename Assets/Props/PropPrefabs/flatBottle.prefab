@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8037826022718989011}
   - component: {fileID: 900827949690100579}
   - component: {fileID: 6217136845161946596}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: flatBottle
   m_TagString: Trash
   m_Icon: {fileID: 0}

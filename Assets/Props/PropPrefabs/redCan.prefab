@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2331739103718555975}
   - component: {fileID: 3587324893748624162}
   - component: {fileID: 4743352155107866275}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: redCan
   m_TagString: Trash
   m_Icon: {fileID: 0}

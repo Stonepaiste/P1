@@ -93,6 +93,7 @@ public class KarstenNPC : MonoBehaviour
         if (other.CompareTag("Sixpackfish"))
         {
             other.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             savedFish.SetActive(true);
             sixpackFish.currentState = SixpackFish.state.saved;
         }
