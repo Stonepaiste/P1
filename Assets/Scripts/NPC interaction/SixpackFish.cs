@@ -8,7 +8,7 @@ public class SixpackFish : MonoBehaviour
     private PlayerMovementFisk pm;                   //spillerens script
     private Animator anim;                           //animatoren på npc
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
-   
+    private bool canChangeEnvironment = true;
 
     [SerializeField] private float waitToMoveTime = 5;
     public GameObject containerTrash;
@@ -153,8 +153,9 @@ public class SixpackFish : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
 
-        if(currentState == state.saved)
+        if(currentState == state.saved && canChangeEnvironment == true)
         {
+            canChangeEnvironment = false;
             runAnim.SetTrigger("Swim");
             GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
             GameManager.instance.currentCoralStage++;
