@@ -13,7 +13,7 @@ public class CodNPC : MonoBehaviour
 
     [SerializeField] private float waitToMoveTime = 5;
 
-    public float DialougeDelay = 3f;
+    private float DialougeDelay = 3f;
         
     [Header("State")]
     public state currentState = state.firstmeeting;
