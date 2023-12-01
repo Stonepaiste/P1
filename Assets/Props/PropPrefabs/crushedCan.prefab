@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5243917313100787895}
   - component: {fileID: 1038227221485280231}
   - component: {fileID: 5035791050747201604}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: crushedCan
   m_TagString: Trash
   m_Icon: {fileID: 0}

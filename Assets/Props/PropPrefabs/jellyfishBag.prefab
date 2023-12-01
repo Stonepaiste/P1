@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8549889660703368486}
   - component: {fileID: 2668565672442581686}
   - component: {fileID: 7614607125260265360}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: jellyfishBag
   m_TagString: Trash
   m_Icon: {fileID: 0}

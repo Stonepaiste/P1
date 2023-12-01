@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1734902600491232921}
   - component: {fileID: 8423686056755409234}
   - component: {fileID: 874686468036787982}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: sandal
   m_TagString: Trash
   m_Icon: {fileID: 0}

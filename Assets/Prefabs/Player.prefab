@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 7906098600958958993}
   - component: {fileID: 4051794620318416830}
   - component: {fileID: 1528806003895754212}
+  - component: {fileID: 4598594189308486223}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -5157,6 +5158,22 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4598594189308486223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4925551373763294494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac25fec540864d058766525799ee5c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sixpackfishAudiosource: {fileID: 0}
+  krabbeaudiosource: {fileID: 0}
+  turtleaudiosource: {fileID: 0}
+  codaudiosource: {fileID: 0}
 --- !u!1 &5452126197069641874
 GameObject:
   m_ObjectHideFlags: 0
