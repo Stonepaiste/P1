@@ -823,7 +823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &332160982
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4121,7 +4121,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "S\xE5 var det bare et sp\xF8rgsm\xE5l om tid..."
+  m_text: "...det var bare et sp\xF8rgsm\xE5l om tid..."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21db0b5f89f1149058f74b1001c15bde, type: 2}
   m_sharedMaterial: {fileID: 6317999137636694831, guid: 21db0b5f89f1149058f74b1001c15bde, type: 2}
