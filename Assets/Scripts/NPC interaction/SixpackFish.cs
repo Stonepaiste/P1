@@ -126,6 +126,7 @@ public class SixpackFish : MonoBehaviour
 
     public void Talk()
     {
+
         if (detectPlayer)
         {
             pressToTalk.SetActive(false);
@@ -133,6 +134,7 @@ public class SixpackFish : MonoBehaviour
             StartCoroutine(WaitToMove(waitToMoveTime));
             pm.canMove = false;
             pm.canTalk = false;
+
             
             switch (currentState)
             {
@@ -185,6 +187,12 @@ public class SixpackFish : MonoBehaviour
 
             Dialogue.SetActive(false);
         }
+
+        if (Dialogue == null)
+        {
+            Debug.Log("null");
+        }
+            
     }
 
     private IEnumerator WaitToMove(float waitTime)
