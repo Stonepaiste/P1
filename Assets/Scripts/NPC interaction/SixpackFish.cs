@@ -41,6 +41,7 @@ public class SixpackFish : MonoBehaviour
         earlyDialouge.SetActive(false);
         pressToTalk.SetActive(false);
         
+        
     }
 
     private void Update()

@@ -5,8 +5,8 @@ using UnityEngine.InputSystem;
 
 public class Sounds : MonoBehaviour
 {
-    SixpackFish sixpacktalkactive;
-    PlayerMovementFisk pm;
+    //SixpackFish sixpacktalkactive;
+    //PlayerMovementFisk pm;
 
     public AudioSource sixpackfishAudiosource;
     public AudioSource krabbeaudiosource;
@@ -16,15 +16,15 @@ public class Sounds : MonoBehaviour
     
 
     // Start is called before the first frame update
-    void Start()
-    {
+    //void Start()
+   // {
         
-        sixpacktalkactive = GetComponent<SixpackFish>();
-        pm = GetComponent<PlayerMovementFisk>();
-    }
+       // sixpacktalkactive = GetComponent<SixpackFish>();
+       // pm = GetComponent<PlayerMovementFisk>();
+   // }
 
 
-    // Update is called once per frame
+   // Update is called once per frame
 
     //public bool canPlay = false;
     //void Update()
@@ -60,20 +60,20 @@ public class Sounds : MonoBehaviour
     //}
 
 
-    void OnTriggerEnter2D(Collider2D other)
+    //void OnTriggerEnter2D(Collider2D other)
 
 
-    {
-        Debug.Log("Collision detected with: " + other.tag);
-        if (other.CompareTag("Sixpackfish") && pm.talkAction.triggered)
+    //{
+    //    Debug.Log("Collision detected with: " + other.tag);
+    //    if (other.CompareTag("Sixpackfish") && pm.talkAction.triggered)
 
-        {
-            sixpackfishAudiosource.Play();
+    //    {
+    //        sixpackfishAudiosource.Play();
 
-            Debug.Log("can play sound!");
+    //        Debug.Log("can play sound!");
 
-        }
+    //    }
 
 
-    }
+    //}
 }
