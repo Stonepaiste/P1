@@ -13,7 +13,7 @@ public class CodNPC : MonoBehaviour
 
     [SerializeField] private float waitToMoveTime = 5;
 
-    private float DialougeDelay = 3f;
+    public float DialougeDelay = 3f;
         
     [Header("State")]
     public state currentState = state.firstmeeting;
@@ -89,6 +89,9 @@ public class CodNPC : MonoBehaviour
             if (currentState != state.dead)
             {
                 StartCoroutine(DialogueAndMove());
+                pm.canMove = false;
+                pm.canTalk = false;
+                StartCoroutine(WaitToMove(waitToMoveTime));
             }
         }
     }
@@ -96,14 +99,12 @@ public class CodNPC : MonoBehaviour
     private IEnumerator DialogueAndMove()
     {
         yield return StartCoroutine(ActivateDialogueWithDelay());
-
-        // This line will only be executed after ActivateDialogueWithDelay is done
-        StartCoroutine(WaitToMove(waitToMoveTime));
     }
 
     private IEnumerator ActivateDialogueWithDelay()
     {
         firstDialouge.SetActive(true);
+
 
         foreach (Transform child in firstDialouge.transform)
         {
@@ -113,13 +114,13 @@ public class CodNPC : MonoBehaviour
         }
 
         DeactivateDialogue();
+        anim.SetTrigger("dead");
     }
     
     private IEnumerator WaitToMove(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
         
-        anim.SetTrigger("dead");
         currentState = state.dead;
         GameManager.instance.currentStage = GameManager.gameStage.stage2;
         GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);

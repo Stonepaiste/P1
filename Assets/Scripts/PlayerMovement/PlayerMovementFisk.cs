@@ -10,7 +10,7 @@ public class PlayerMovementFisk : MonoBehaviour
     public int speed = 5; // SerializeField gør at access modifieren er sat til private men at vi stadig kan se values i unity
 
     //Referer til input systemet
-    private InputAction talkAction; //specifikke talk actions
+    public InputAction talkAction; //specifikke talk actions
     [SerializeField] private InputActionAsset inputActions; //Input action map
     [SerializeField] private TurtleNPC turtle; //reference til dialogscript
     [SerializeField] private SixpackFish sixpackFish; //reference til dialogscript
@@ -20,12 +20,24 @@ public class PlayerMovementFisk : MonoBehaviour
     public bool canMove;
     public bool canTalk;
 
+    public bool turtletalkaudio;
+    public bool Sixpacktalkaudio;
+    public bool codtalkaudio;
+    public bool krabbetalkaudio;
+
     private Animator animator;
 
     private void Awake() // kører kun 1 gang når program starter 
     {
         canMove = true;
         canTalk = true;
+
+        turtletalkaudio = true;
+        Sixpacktalkaudio = false;
+        codtalkaudio = false;
+        krabbetalkaudio = true;
+
+
         animator = GetComponent<Animator>();
         Fiskekrop = GetComponent<Rigidbody2D>(); // Vi sætter "fiskekrop" ridigbody til rigidbody på vores gameobject
         talkAction = inputActions.FindActionMap("Player").FindAction("Talk"); //Finder talk inputtet i input mappet i unity
@@ -60,18 +72,31 @@ public class PlayerMovementFisk : MonoBehaviour
         //Hvis vores input til at snakke bliver triggered, kalder den snakke action i npc scriptet
         if (talkAction.triggered && canTalk)
         {
-            if(turtle != null)
+            if(turtle != null && turtle.detectPlayer==true)
+            { 
                 turtle.Talk();
+            turtletalkaudio = false;
+            }
 
-            if(cod != null)
+            if(cod != null && cod.detectPlayer==true)
+            { 
                 cod.Talk();
-            
-            if(sixpackFish != null)
-                sixpackFish.Talk();
+                codtalkaudio = true;
+                cod.GetComponent<AudioSource>().Play();
+            }
 
-            if (krabbe != null)
+            if(sixpackFish != null && sixpackFish.detectPlayer==true)
+            { 
+                sixpackFish.Talk();
+            Sixpacktalkaudio = true;
+            }
+
+            if (krabbe != null && krabbe.detectPlayer==true)
+            { 
                 krabbe.Talk();
-            
+            krabbetalkaudio = false;
+            }
+
         }
     }
 }
