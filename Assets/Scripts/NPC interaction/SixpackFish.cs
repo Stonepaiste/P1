@@ -8,6 +8,7 @@ public class SixpackFish : MonoBehaviour
     private PlayerMovementFisk pm;                   //spillerens script
     private Animator anim;                           //animatoren på npc
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
+   
 
     [SerializeField] private float waitToMoveTime = 5;
     public GameObject containerTrash;
@@ -39,6 +40,7 @@ public class SixpackFish : MonoBehaviour
         thirdDialouge.SetActive(false);
         earlyDialouge.SetActive(false);
         pressToTalk.SetActive(false);
+        
     }
 
     private void Update()
@@ -73,6 +75,7 @@ public class SixpackFish : MonoBehaviour
         {
             detectPlayer = true;
             pressToTalk.SetActive(true);
+            
         }
        
     }
@@ -88,6 +91,7 @@ public class SixpackFish : MonoBehaviour
             thirdDialouge.SetActive(false);
             earlyDialouge.SetActive(false);
             pressToTalk.SetActive(false);
+            
         }
     }
 
