@@ -21,9 +21,9 @@ public class SixpackFish : MonoBehaviour
     [Header("dialouge boxes")]
     [SerializeField] private Vector3 textOffset;     //offset hvor tekst skal placere sig ift. npc'en selv
     [SerializeField] private GameObject earlyDialouge;
-    [SerializeField] private GameObject firstDialouge;
-    [SerializeField] private GameObject secondDialouge;
-    [SerializeField] private GameObject thirdDialouge;
+    [SerializeField] private GameObject helpMeDialouge;
+    [SerializeField] private GameObject findCrabDialouge;
+    [SerializeField] private GameObject thankyouDialouge;
     [SerializeField] private GameObject pressToTalk;      //objekt der indeholder press m tekst
 
 
@@ -35,9 +35,9 @@ public class SixpackFish : MonoBehaviour
 
         //Sætter de rigtige parametre til false når spillet starter
         detectPlayer = false;
-        firstDialouge.SetActive(false);
-        secondDialouge.SetActive(false);
-        thirdDialouge.SetActive(false);
+        helpMeDialouge.SetActive(false);
+        findCrabDialouge.SetActive(false);
+        thankyouDialouge.SetActive(false);
         earlyDialouge.SetActive(false);
         pressToTalk.SetActive(false);
         
@@ -86,9 +86,9 @@ public class SixpackFish : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             detectPlayer = false;
-            firstDialouge.SetActive(false);
-            secondDialouge.SetActive(false);
-            thirdDialouge.SetActive(false);
+            helpMeDialouge.SetActive(false);
+            findCrabDialouge.SetActive(false);
+            thankyouDialouge.SetActive(false);
             earlyDialouge.SetActive(false);
             pressToTalk.SetActive(false);
             
@@ -97,10 +97,10 @@ public class SixpackFish : MonoBehaviour
 
     private void PlaceText()
     {
-        firstDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
-        secondDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
+        helpMeDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
+        findCrabDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
         earlyDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
-        thirdDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
+        thankyouDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
 
         pressToTalk.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
     }
@@ -123,8 +123,8 @@ public class SixpackFish : MonoBehaviour
                     break;
 
                 case state.firstmeeting:
-                    firstDialouge.SetActive(true);
-                    firstDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                    helpMeDialouge.SetActive(true);
+                    helpMeDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
                     GameManager.instance.currentCoralStage++;
                     GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
@@ -134,15 +134,14 @@ public class SixpackFish : MonoBehaviour
                     break;
 
                 case state.help:
-                    firstDialouge.SetActive(false);
-                    secondDialouge.SetActive(true);
-                    secondDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                    helpMeDialouge.SetActive(false);
+                    findCrabDialouge.SetActive(true);
+                    findCrabDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     break;
 
                 case state.saved:
-                    thirdDialouge.SetActive(true);
-                    thirdDialouge.GetComponent<Animator>().SetTrigger("Animate");
-
+                    thankyouDialouge.SetActive(true);
+                    thankyouDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     break;
 
             }
@@ -156,6 +155,10 @@ public class SixpackFish : MonoBehaviour
         if(currentState == state.saved)
         {
             runAnim.SetTrigger("Swim");
+            GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
+            GameManager.instance.currentCoralStage++;
+            GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
+            GameManager.instance.currentStage = GameManager.gameStage.stage6;
         }
 
         pm.canMove = true;

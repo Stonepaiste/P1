@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5467987174577485148}
   - component: {fileID: 7906098600958958993}
   - component: {fileID: 4051794620318416830}
-  - component: {fileID: 1454537191248376958}
+  - component: {fileID: 1528806003895754212}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -217,7 +217,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.37324047, y: 0.025740802}
+  m_Offset: {x: -0.1433053, y: 0.10838866}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -228,7 +228,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.621666, y: 2.6474056}
+  m_Size: {x: 2.828288, y: 2.8127012}
   m_EdgeRadius: 0
 --- !u!95 &5467987174577485148
 Animator:
@@ -5048,7 +5048,7 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
---- !u!82 &1454537191248376958
+--- !u!82 &1528806003895754212
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5062,7 +5062,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0.416
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

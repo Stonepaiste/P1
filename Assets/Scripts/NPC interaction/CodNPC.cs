@@ -12,6 +12,8 @@ public class CodNPC : MonoBehaviour
     [HideInInspector]public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
 
     [SerializeField] private float waitToMoveTime = 5;
+
+    private float DialougeDelay = 3f;
         
     [Header("State")]
     public state currentState = state.firstmeeting;
@@ -33,6 +35,11 @@ public class CodNPC : MonoBehaviour
         detectPlayer = false;
         firstDialouge.SetActive(false);
         pressToTalk.SetActive(false);
+
+        foreach (Transform child in firstDialouge.transform)
+        {
+            child.gameObject.SetActive(false);
+        }
     }
 
     private void Update()
@@ -57,8 +64,7 @@ public class CodNPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             detectPlayer = false;
-            firstDialouge.SetActive(false);
-            pressToTalk.SetActive(false);
+            DeactivateDialogue();
         }
     }
 
@@ -66,6 +72,12 @@ public class CodNPC : MonoBehaviour
     {
         firstDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
         pressToTalk.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
+    }
+
+    private void DeactivateDialogue()
+    {
+        firstDialouge.SetActive(false);
+        pressToTalk.SetActive(false);
     }
 
     public void Talk()
@@ -76,24 +88,33 @@ public class CodNPC : MonoBehaviour
 
             if (currentState != state.dead)
             {
-                StartCoroutine(WaitToMove(waitToMoveTime));
-                pm.canMove = false;
-                pm.canTalk = false;
-            }
-
-            switch (currentState)
-            {
-                case state.firstmeeting:
-                    firstDialouge.SetActive(true);
-                    firstDialouge.GetComponent<Animator>().SetTrigger("Animate");
-                    break;
-
-                case state.dead:
-                    break;
+                StartCoroutine(DialogueAndMove());
             }
         }
     }
 
+    private IEnumerator DialogueAndMove()
+    {
+        yield return StartCoroutine(ActivateDialogueWithDelay());
+
+        // This line will only be executed after ActivateDialogueWithDelay is done
+        StartCoroutine(WaitToMove(waitToMoveTime));
+    }
+
+    private IEnumerator ActivateDialogueWithDelay()
+    {
+        firstDialouge.SetActive(true);
+
+        foreach (Transform child in firstDialouge.transform)
+        {
+            child.gameObject.SetActive(true);
+            yield return new WaitForSeconds(DialougeDelay);
+            child.gameObject.SetActive(false);
+        }
+
+        DeactivateDialogue();
+    }
+    
     private IEnumerator WaitToMove(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);

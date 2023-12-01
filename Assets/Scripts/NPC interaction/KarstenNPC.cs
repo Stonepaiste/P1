@@ -163,6 +163,7 @@ public class KarstenNPC : MonoBehaviour
                     }
                     else
                     {
+                        helpWithTrash.SetActive(false);
                         helpWithTrashStill.SetActive(true);
                         helpWithTrashStill.GetComponent<Animator>().SetTrigger("Animate");
                     }
