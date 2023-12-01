@@ -126,6 +126,7 @@ public class SixpackFish : MonoBehaviour
 
     public void Talk()
     {
+
         if (detectPlayer)
         {
             pressToTalk.SetActive(false);
@@ -133,17 +134,18 @@ public class SixpackFish : MonoBehaviour
             StartCoroutine(WaitToMove(waitToMoveTime));
             pm.canMove = false;
             pm.canTalk = false;
+
             
             switch (currentState)
             {
                 case state.earlymeeting:
-                    ActivateDialogueWithDelay(earlyDialouge);
+                    StartCoroutine(ActivateDialogueWithDelay(earlyDialouge));
                     //earlyDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     break;
 
                 case state.firstmeeting:
-                    helpMeDialouge.SetActive(true);
-                    helpMeDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                    StartCoroutine(ActivateDialogueWithDelay(helpMeDialouge));
+                    //helpMeDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
                     GameManager.instance.currentCoralStage++;
                     GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
@@ -153,14 +155,13 @@ public class SixpackFish : MonoBehaviour
                     break;
 
                 case state.help:
-                    helpMeDialouge.SetActive(false);
-                    findCrabDialouge.SetActive(true);
-                    findCrabDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                    StartCoroutine(ActivateDialogueWithDelay(findCrabDialouge));
+                    //findCrabDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     break;
 
                 case state.saved:
-                    thankyouDialouge.SetActive(true);
-                    thankyouDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                    StartCoroutine(ActivateDialogueWithDelay(thankyouDialouge));
+                    //thankyouDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     break;
 
             }
@@ -185,6 +186,7 @@ public class SixpackFish : MonoBehaviour
 
             Dialogue.SetActive(false);
         }
+            
     }
 
     private IEnumerator WaitToMove(float waitTime)
