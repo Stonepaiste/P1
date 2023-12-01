@@ -9,6 +9,7 @@ public class SixpackFish : MonoBehaviour
     private Animator anim;                           //animatoren på npc
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
     private bool canChangeEnvironment = true;
+    private float DialougeDelay = 3f;
 
     [SerializeField] private float waitToMoveTime = 5;
     public GameObject containerTrash;
@@ -40,8 +41,25 @@ public class SixpackFish : MonoBehaviour
         thankyouDialouge.SetActive(false);
         earlyDialouge.SetActive(false);
         pressToTalk.SetActive(false);
-        
-        
+
+        DeactivateChilden(helpMeDialouge);
+        DeactivateChilden(findCrabDialouge);
+        DeactivateChilden(earlyDialouge);
+        DeactivateChilden(thankyouDialouge);    
+    }
+
+    private void DeactivateChilden(GameObject DiffDialouge)
+    {
+        if (DiffDialouge != null)
+        {
+            foreach (Transform child in DiffDialouge.transform)
+            {
+                if (child != null && child.gameObject != null)
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 
     private void Update()
@@ -119,8 +137,8 @@ public class SixpackFish : MonoBehaviour
             switch (currentState)
             {
                 case state.earlymeeting:
-                    earlyDialouge.SetActive(true);
-                    earlyDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                    ActivateDialogueWithDelay(earlyDialouge);
+                    //earlyDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     break;
 
                 case state.firstmeeting:
@@ -146,6 +164,26 @@ public class SixpackFish : MonoBehaviour
                     break;
 
             }
+        }
+    }
+
+    private IEnumerator ActivateDialogueWithDelay(GameObject Dialogue)
+    {
+        if (Dialogue != null)
+        {
+            Dialogue.SetActive(true);
+
+            foreach (Transform child in Dialogue.transform)
+            {
+                if (child != null && child.gameObject != null)
+                {
+                    child.gameObject.SetActive(true);
+                    yield return new WaitForSeconds(DialougeDelay);
+                    child.gameObject.SetActive(false);
+                }
+            }
+
+            Dialogue.SetActive(false);
         }
     }
 
