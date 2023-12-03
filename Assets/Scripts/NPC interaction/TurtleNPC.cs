@@ -10,6 +10,7 @@ public class TurtleNPC : MonoBehaviour
     private PlayerMovementFisk pm;                   //spillerens script
     private Animator anim;                           //animatoren på npc
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
+    private float DialougeDelay = 3f;
 
     [SerializeField] private float waitToMoveTime = 5;
     public GameObject deadTurtle;
@@ -39,7 +40,26 @@ public class TurtleNPC : MonoBehaviour
         firstDialouge.SetActive(false);
         secondDialouge.SetActive(false);
         thirdDialouge.SetActive(false);
+        deadDialouge.SetActive(false);
         pressToTalk.SetActive(false);
+
+        DeactivateChilden(firstDialouge);  
+        DeactivateChilden(secondDialouge);  
+        DeactivateChilden(thirdDialouge);  
+    }
+
+    private void DeactivateChilden(GameObject DiffDialouge)
+    {
+        if (DiffDialouge != null)
+        {
+            foreach (Transform child in DiffDialouge.transform)
+            {
+                if (child != null && child.gameObject != null)
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 
     private void Update()
@@ -119,13 +139,13 @@ public class TurtleNPC : MonoBehaviour
             switch (currentState)
             {
                 case state.firstmeeting:
-                    firstDialouge.SetActive(true);
-                    firstDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                    StartCoroutine(ActivateDialogueWithDelay(firstDialouge));
+                    //firstDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     break;
 
                 case state.second:
-                    secondDialouge.SetActive(true);
-                    secondDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                    StartCoroutine(ActivateDialogueWithDelay(secondDialouge));
+                    //secondDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     GameManager.instance.currentStage = GameManager.gameStage.stage3;
                     GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
                     GameManager.instance.currentCoralStage++;
@@ -133,17 +153,37 @@ public class TurtleNPC : MonoBehaviour
                     break;
 
                 case state.third:
-                    secondDialouge.SetActive(false);
-                    thirdDialouge.SetActive(true);
-                    thirdDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                    StartCoroutine(ActivateDialogueWithDelay(thirdDialouge));
+                    //thirdDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     //DØD
                     break;
 
                 case state.dead:
-                    deadDialouge.SetActive(true);
+                    StartCoroutine(ActivateDialogueWithDelay(deadDialouge));
                     break;
             }
         }
+    }
+
+    private IEnumerator ActivateDialogueWithDelay(GameObject Dialogue)
+    {
+        if (Dialogue != null)
+        {
+            Dialogue.SetActive(true);
+
+            foreach (Transform child in Dialogue.transform)
+            {
+                if (child != null && child.gameObject != null)
+                {
+                    child.gameObject.SetActive(true);
+                    yield return new WaitForSeconds(DialougeDelay);
+                    child.gameObject.SetActive(false);
+                }
+            }
+
+            Dialogue.SetActive(false);
+        }
+            
     }
 
     private IEnumerator WaitToMove(float waitTime)
