@@ -9,7 +9,7 @@ public class SixpackFish : MonoBehaviour
     private Animator anim;                           //animatoren på npc
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
     private bool canChangeEnvironment = true;
-    private float DialougeDelay = 3f;
+    private float DialougeDelay = 5f;
 
     [SerializeField] private float waitToMoveTime = 5;
     public GameObject containerTrash;
@@ -23,7 +23,6 @@ public class SixpackFish : MonoBehaviour
     [SerializeField] private Vector3 textOffset;     //offset hvor tekst skal placere sig ift. npc'en selv
     [SerializeField] private GameObject earlyDialouge;
     [SerializeField] private GameObject helpMeDialouge;
-    [SerializeField] private GameObject findCrabDialouge;
     [SerializeField] private GameObject thankyouDialouge;
     [SerializeField] private GameObject pressToTalk;      //objekt der indeholder press m tekst
 
@@ -37,13 +36,11 @@ public class SixpackFish : MonoBehaviour
         //Sætter de rigtige parametre til false når spillet starter
         detectPlayer = false;
         helpMeDialouge.SetActive(false);
-        findCrabDialouge.SetActive(false);
         thankyouDialouge.SetActive(false);
         earlyDialouge.SetActive(false);
         pressToTalk.SetActive(false);
 
         DeactivateChilden(helpMeDialouge);
-        DeactivateChilden(findCrabDialouge);
         DeactivateChilden(earlyDialouge);
         DeactivateChilden(thankyouDialouge);    
     }
@@ -106,7 +103,6 @@ public class SixpackFish : MonoBehaviour
         {
             detectPlayer = false;
             helpMeDialouge.SetActive(false);
-            findCrabDialouge.SetActive(false);
             thankyouDialouge.SetActive(false);
             earlyDialouge.SetActive(false);
             pressToTalk.SetActive(false);
@@ -117,7 +113,6 @@ public class SixpackFish : MonoBehaviour
     private void PlaceText()
     {
         helpMeDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
-        findCrabDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
         earlyDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
         thankyouDialouge.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
 
@@ -129,12 +124,10 @@ public class SixpackFish : MonoBehaviour
 
         if (detectPlayer)
         {
-            pressToTalk.SetActive(false);
-
-            StartCoroutine(WaitToMove(waitToMoveTime));
             pm.canMove = false;
             pm.canTalk = false;
-
+            pressToTalk.SetActive(false);
+            StartCoroutine(WaitToMove(waitToMoveTime));
             
             switch (currentState)
             {
@@ -150,13 +143,7 @@ public class SixpackFish : MonoBehaviour
                     GameManager.instance.currentCoralStage++;
                     GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
                     GameManager.instance.currentStage = GameManager.gameStage.stage4;
-                    currentState = state.help;
                     containerTrash.SetActive(true);
-                    break;
-
-                case state.help:
-                    StartCoroutine(ActivateDialogueWithDelay(findCrabDialouge));
-                    //findCrabDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     break;
 
                 case state.saved:
@@ -165,6 +152,9 @@ public class SixpackFish : MonoBehaviour
                     break;
 
             }
+
+            pm.canMove = true;
+            pm.canTalk = true;
         }
     }
 
@@ -202,8 +192,5 @@ public class SixpackFish : MonoBehaviour
             GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
             GameManager.instance.currentStage = GameManager.gameStage.stage6;
         }
-
-        pm.canMove = true;
-        pm.canTalk = true;
     }
 }

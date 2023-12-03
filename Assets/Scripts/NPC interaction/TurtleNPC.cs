@@ -10,9 +10,8 @@ public class TurtleNPC : MonoBehaviour
     private PlayerMovementFisk pm;                   //spillerens script
     private Animator anim;                           //animatoren på npc
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
-    private float DialougeDelay = 3f;
+    private float DialougeDelay = 5f;
 
-    [SerializeField] private float waitToMoveTime = 5;
     public GameObject deadTurtle;
 
     [Header("State")]
@@ -131,8 +130,6 @@ public class TurtleNPC : MonoBehaviour
         if (detectPlayer)
         {
             pressToTalk.SetActive(false);
-
-            StartCoroutine(WaitToMove(waitToMoveTime));
             pm.canMove = false;
             pm.canTalk = false;
             
@@ -162,6 +159,7 @@ public class TurtleNPC : MonoBehaviour
                     StartCoroutine(ActivateDialogueWithDelay(deadDialouge));
                     break;
             }
+
         }
     }
 
@@ -182,15 +180,10 @@ public class TurtleNPC : MonoBehaviour
             }
 
             Dialogue.SetActive(false);
+            pm.canMove = true;
+            pm.canTalk = true;
         }
             
     }
 
-    private IEnumerator WaitToMove(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-
-        pm.canMove = true;
-        pm.canTalk = true;
-    }
 }

@@ -20,6 +20,7 @@ public class PlayerMovementFisk : MonoBehaviour
     public AudioSource swimSound;
 
     public bool canMove;
+
     public bool canTalk;
 
     public bool turtletalkaudio;

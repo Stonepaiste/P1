@@ -13,7 +13,7 @@ public class KarstenNPC : MonoBehaviour
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
     private Animator anim;
     public GameObject savedFish;
-    private float DialougeDelay = 3f;
+    private float DialougeDelay = 5f;
 
 
     [SerializeField] private float waitToMoveTime = 5;
@@ -154,9 +154,6 @@ public class KarstenNPC : MonoBehaviour
             pm.canMove = false;
             pm.canTalk = false;
 
-            if (container.trashcollected >= trashNeeded)
-                followPlayer = true;
-
             switch (currentState)
             {
                 case state.early:
@@ -194,6 +191,9 @@ public class KarstenNPC : MonoBehaviour
                     //DØD
                     break;
             }
+
+            pm.canMove = true;
+            pm.canTalk = true;
         }
     }
 
@@ -214,6 +214,8 @@ public class KarstenNPC : MonoBehaviour
             }
 
             Dialogue.SetActive(false);
+            if (container.trashcollected >= trashNeeded)
+                followPlayer = true;
         }
             
     }
@@ -224,9 +226,6 @@ public class KarstenNPC : MonoBehaviour
 
         if (GameManager.instance.currentStage == GameManager.gameStage.stage4)
             GameManager.instance.currentStage = GameManager.gameStage.stage5;
-
-        pm.canMove = true;
-        pm.canTalk = true;
     }
 
     private void Follow()

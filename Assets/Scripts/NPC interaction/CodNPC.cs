@@ -7,13 +7,14 @@ using System;
 public class CodNPC : MonoBehaviour
 {
     private Camera mainCam;                          //Camera
-    private PlayerMovementFisk pm;                   //spillerens script
+    [SerializeField] PlayerMovementFisk pm;                   //spillerens script
     private Animator anim;                           //animatoren på npc
     [HideInInspector]public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
 
     [SerializeField] private float waitToMoveTime = 5;
 
-    private float DialougeDelay = 3f;
+    private float DialougeDelay = 5f;
+
         
     [Header("State")]
     public state currentState = state.firstmeeting;
@@ -30,6 +31,8 @@ public class CodNPC : MonoBehaviour
         mainCam = Camera.main;                      //henter kamera
         anim = GetComponent<Animator>();
         pm = FindAnyObjectByType<PlayerMovementFisk>();
+        
+
 
         //Sætter de rigtige parametre til false når spillet starter
         detectPlayer = false;
@@ -85,12 +88,12 @@ public class CodNPC : MonoBehaviour
         if (detectPlayer)
         {
             pressToTalk.SetActive(false);
+            pm.canMove = false;
+            pm.canTalk = false;
 
             if (currentState != state.dead)
             {
                 StartCoroutine(DialogueAndMove());
-                pm.canMove = false;
-                pm.canTalk = false;
                 StartCoroutine(WaitToMove(waitToMoveTime));
             }
         }
@@ -103,8 +106,8 @@ public class CodNPC : MonoBehaviour
 
     private IEnumerator ActivateDialogueWithDelay()
     {
+        
         firstDialouge.SetActive(true);
-
 
         foreach (Transform child in firstDialouge.transform)
         {
