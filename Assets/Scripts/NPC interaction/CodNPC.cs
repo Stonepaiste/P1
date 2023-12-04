@@ -13,7 +13,7 @@ public class CodNPC : MonoBehaviour
 
     [SerializeField] private float waitToMoveTime = 5;
 
-    private float DialougeDelay = 5f;
+    private float DialougeDelay = 0.1f;
 
         
     [Header("State")]
@@ -112,6 +112,8 @@ public class CodNPC : MonoBehaviour
         foreach (Transform child in firstDialouge.transform)
         {
             child.gameObject.SetActive(true);
+            yield return new WaitForSeconds(DialougeDelay);
+            yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.M));
             yield return new WaitForSeconds(DialougeDelay);
             child.gameObject.SetActive(false);
         }

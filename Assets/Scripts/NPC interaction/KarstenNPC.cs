@@ -13,7 +13,7 @@ public class KarstenNPC : MonoBehaviour
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
     private Animator anim;
     public GameObject savedFish;
-    private float DialougeDelay = 5f;
+    private float DialougeDelay = 0.1f;
 
 
     [SerializeField] private float waitToMoveTime = 5;
@@ -207,6 +207,8 @@ public class KarstenNPC : MonoBehaviour
                 if (child != null && child.gameObject != null)
                 {
                     child.gameObject.SetActive(true);
+                    yield return new WaitForSeconds(DialougeDelay);
+                    yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.M));
                     yield return new WaitForSeconds(DialougeDelay);
                     child.gameObject.SetActive(false);
                 }

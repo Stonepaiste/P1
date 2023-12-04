@@ -9,7 +9,7 @@ public class SixpackFish : MonoBehaviour
     private Animator anim;                           //animatoren på npc
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
     private bool canChangeEnvironment = true;
-    private float DialougeDelay = 5f;
+    private float DialougeDelay = 0.1f;
 
     [SerializeField] private float waitToMoveTime = 5;
     public GameObject containerTrash;
@@ -164,6 +164,8 @@ public class SixpackFish : MonoBehaviour
                 if (child != null && child.gameObject != null)
                 {
                     child.gameObject.SetActive(true);
+                    yield return new WaitForSeconds(DialougeDelay);
+                    yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.M));
                     yield return new WaitForSeconds(DialougeDelay);
                     child.gameObject.SetActive(false);
                 }
