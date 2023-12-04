@@ -39,10 +39,7 @@ public class SixpackFish : MonoBehaviour
         thankyouDialouge.SetActive(false);
         earlyDialouge.SetActive(false);
         pressToTalk.SetActive(false);
-
-        DeactivateChilden(helpMeDialouge);
-        DeactivateChilden(earlyDialouge);
-        DeactivateChilden(thankyouDialouge);    
+   
     }
 
     private void DeactivateChilden(GameObject DiffDialouge)
@@ -124,6 +121,10 @@ public class SixpackFish : MonoBehaviour
             pm.canMove = false;
             pm.canTalk = false;
             pressToTalk.SetActive(false);
+
+            DeactivateChilden(helpMeDialouge);
+            DeactivateChilden(earlyDialouge);
+            DeactivateChilden(thankyouDialouge); 
             
             switch (currentState)
             {
@@ -181,7 +182,7 @@ public class SixpackFish : MonoBehaviour
                 GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
                 GameManager.instance.currentStage = GameManager.gameStage.stage6;
             }
-            
+
             pm.canMove = true;
             pm.canTalk = true;
 
