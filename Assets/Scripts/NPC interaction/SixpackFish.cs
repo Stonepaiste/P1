@@ -168,19 +168,20 @@ public class SixpackFish : MonoBehaviour
                     yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.M));
                     yield return new WaitForSeconds(DialougeDelay);
                     child.gameObject.SetActive(false);
-                }
-                
+                } 
             }
+
              if(currentState == state.saved && canChangeEnvironment == true)
-        {
-            canChangeEnvironment = false;
-            GetComponent<BoxCollider2D>().enabled = false;
-            runAnim.SetTrigger("Swim");
-            GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
-            GameManager.instance.currentCoralStage++;
-            GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
-            GameManager.instance.currentStage = GameManager.gameStage.stage6;
-        }
+            {
+                canChangeEnvironment = false;
+                GetComponent<BoxCollider2D>().enabled = false;
+                runAnim.SetTrigger("Swim");
+                GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
+                GameManager.instance.currentCoralStage++;
+                GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
+                GameManager.instance.currentStage = GameManager.gameStage.stage6;
+            }
+            
             pm.canMove = true;
             pm.canTalk = true;
 
