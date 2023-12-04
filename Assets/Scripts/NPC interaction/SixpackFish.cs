@@ -90,10 +90,8 @@ public class SixpackFish : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             detectPlayer = true;
-            pressToTalk.SetActive(true);
-            
+            pressToTalk.SetActive(true);   
         }
-       
     }
 
     private void OnTriggerExit2D(Collider2D other)
@@ -121,7 +119,6 @@ public class SixpackFish : MonoBehaviour
 
     public void Talk()
     {
-
         if (detectPlayer)
         {
             pm.canMove = false;
@@ -186,6 +183,7 @@ public class SixpackFish : MonoBehaviour
         if(currentState == state.saved && canChangeEnvironment == true)
         {
             canChangeEnvironment = false;
+            GetComponent<BoxCollider2D>().enabled = false;
             runAnim.SetTrigger("Swim");
             GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
             GameManager.instance.currentCoralStage++;

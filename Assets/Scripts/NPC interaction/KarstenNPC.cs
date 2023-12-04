@@ -112,7 +112,7 @@ public class KarstenNPC : MonoBehaviour
         if (other.CompareTag("Sixpackfish"))
         {
             other.gameObject.GetComponent<SpriteRenderer>().enabled = false;
-            other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            //other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             savedFish.SetActive(true);
             sixpackFish.currentState = SixpackFish.state.saved;
         }
@@ -198,7 +198,7 @@ public class KarstenNPC : MonoBehaviour
     }
 
      private IEnumerator ActivateDialogueWithDelay(GameObject Dialogue)
-    {
+     {
         if (Dialogue != null)
         {
             Dialogue.SetActive(true);
@@ -218,7 +218,7 @@ public class KarstenNPC : MonoBehaviour
                 followPlayer = true;
         }
             
-    }
+     }
 
     private IEnumerator WaitToMove(float waitTime)
     {
