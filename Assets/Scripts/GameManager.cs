@@ -41,10 +41,10 @@ public class GameManager : MonoBehaviour
                 break;
 
             case gameStage.stage2:
+                saturationValue = satStage3;
                 break;
 
             case gameStage.stage3:
-                saturationValue = satStage3;
                 break;
 
             case gameStage.stage4:
