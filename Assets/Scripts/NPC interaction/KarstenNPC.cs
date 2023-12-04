@@ -51,10 +51,6 @@ public class KarstenNPC : MonoBehaviour
         early.SetActive(false);
         finishedDialouge.SetActive(false);
         pressToTalk.SetActive(false);
-
-        DeactivateChilden(helpWithTrash); 
-        DeactivateChilden(early); 
-        DeactivateChilden(finishedDialouge); 
     }
 
     private void DeactivateChilden(GameObject DiffDialouge)
@@ -154,6 +150,9 @@ public class KarstenNPC : MonoBehaviour
             StartCoroutine(WaitToMove(waitToMoveTime));
             pm.canMove = false;
             pm.canTalk = false;
+            DeactivateChilden(helpWithTrash); 
+            DeactivateChilden(early); 
+            DeactivateChilden(finishedDialouge); 
 
             switch (currentState)
             {

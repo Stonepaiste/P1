@@ -40,11 +40,7 @@ public class TurtleNPC : MonoBehaviour
         secondDialouge.SetActive(false);
         thirdDialouge.SetActive(false);
         deadDialouge.SetActive(false);
-        pressToTalk.SetActive(false);
-
-        DeactivateChilden(firstDialouge);  
-        DeactivateChilden(secondDialouge);  
-        DeactivateChilden(thirdDialouge);  
+        pressToTalk.SetActive(false);  
     }
 
     private void DeactivateChilden(GameObject DiffDialouge)
@@ -132,6 +128,10 @@ public class TurtleNPC : MonoBehaviour
             pressToTalk.SetActive(false);
             pm.canMove = false;
             pm.canTalk = false;
+
+            DeactivateChilden(firstDialouge);  
+            DeactivateChilden(secondDialouge);  
+            DeactivateChilden(thirdDialouge);
             
             switch (currentState)
             {
