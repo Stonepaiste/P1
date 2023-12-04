@@ -10010,6 +10010,7 @@ MonoBehaviour:
   target: {fileID: 613797267}
   offset: {x: 2, y: 0, z: -10}
   followTime: 0.5
+  minYPos: -135
 --- !u!1 &521828753
 GameObject:
   m_ObjectHideFlags: 0
