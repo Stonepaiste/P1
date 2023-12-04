@@ -1,24 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class GameManager : MonoBehaviour
 {
-    public List<GameObject> objectsToShow; // Object referece til det objekt/objekter der skal vises
-    //public int maxStages = 3; //antal stages
+    [Header("Post Processing")]
+    public PostProcessVolume ppVolume;
+    ColorGrading colorGrading;
+    public int satStage3;
+    public int satStage4;
+    public int satStage5;
+    public int satStage6;
+    private int saturationValue;
 
+    [Header("Coral parameters")]
     public int currentCoralStage = 0; // start på nul for at vise at den første stage er aktiv
     public int previousCoralStage;
+    public List<GameObject> objectsToShow; // Object referece til det objekt/objekter der skal vises
+                                           //public int maxStages = 3; //antal stages
 
     public enum gameStage { stage1, stage2, stage3, stage4, stage5, stage6, stage7 }
-
     public gameStage currentStage = gameStage.stage1;
 
     public static GameManager instance;
 
+
     void Start()
     {
         instance = this;
+        ppVolume.profile.TryGetSettings(out colorGrading);
+        colorGrading.active = true;
     }
 
     void Update()
@@ -32,20 +44,22 @@ public class GameManager : MonoBehaviour
                 break;
 
             case gameStage.stage3:
+                saturationValue = satStage3;
                 break;
 
             case gameStage.stage4:
+                saturationValue = satStage4;
                 break;
 
             case gameStage.stage5:
+                saturationValue = satStage5;
                 break;
 
             case gameStage.stage6:
-                break;
-
-            case gameStage.stage7:
+                saturationValue = satStage6;
                 break;
         }
+        colorGrading.saturation.value = saturationValue;
     }
 
     /*
