@@ -13,6 +13,7 @@ public class KarstenNPC : MonoBehaviour
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
     private Animator anim;
     public GameObject savedFish;
+    private float DialougeDelay = 5f;
 
 
     [SerializeField] private float waitToMoveTime = 5;
@@ -50,6 +51,24 @@ public class KarstenNPC : MonoBehaviour
         early.SetActive(false);
         finishedDialouge.SetActive(false);
         pressToTalk.SetActive(false);
+
+        DeactivateChilden(helpWithTrash); 
+        DeactivateChilden(early); 
+        DeactivateChilden(finishedDialouge); 
+    }
+
+    private void DeactivateChilden(GameObject DiffDialouge)
+    {
+        if (DiffDialouge != null)
+        {
+            foreach (Transform child in DiffDialouge.transform)
+            {
+                if (child != null && child.gameObject != null)
+                {
+                    child.gameObject.SetActive(false);
+                }
+            }
+        }
     }
 
     private void Update()
@@ -135,20 +154,17 @@ public class KarstenNPC : MonoBehaviour
             pm.canMove = false;
             pm.canTalk = false;
 
-            if (container.trashcollected >= trashNeeded)
-                followPlayer = true;
-
             switch (currentState)
             {
                 case state.early:
-                    early.SetActive(true);
-                    early.GetComponent<Animator>().SetTrigger("Animate");
+                    StartCoroutine(ActivateDialogueWithDelay(early));
+                    //early.GetComponent<Animator>().SetTrigger("Animate");
                     break;
 
                 case state.firstmeeting:
                     //Sige hjælp med skrald
-                    helpWithTrash.SetActive(true);
-                    helpWithTrash.GetComponent<Animator>().SetTrigger("Animate");
+                    StartCoroutine(ActivateDialogueWithDelay(helpWithTrash));
+                    //helpWithTrash.GetComponent<Animator>().SetTrigger("Animate");
                     GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
                     GameManager.instance.currentCoralStage++;
                     GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
@@ -159,25 +175,49 @@ public class KarstenNPC : MonoBehaviour
                 case state.follow:
                     if(container.trashcollected >= trashNeeded)
                     {
-                        thankyouDialouge.SetActive(true);
-                        thankyouDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                        StartCoroutine(ActivateDialogueWithDelay(thankyouDialouge));
+                        //thankyouDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     }
                     else
                     {
-                        helpWithTrash.SetActive(false);
-                        helpWithTrashStill.SetActive(true);
-                        helpWithTrashStill.GetComponent<Animator>().SetTrigger("Animate");
+                        StartCoroutine(ActivateDialogueWithDelay(helpWithTrashStill));
+                        //helpWithTrashStill.GetComponent<Animator>().SetTrigger("Animate");
                     }
                     break;
 
                 case state.finished:
-                    early.SetActive(false);
-                    finishedDialouge.SetActive(true);
-                    finishedDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                    StartCoroutine(ActivateDialogueWithDelay(finishedDialouge));
+                    //finishedDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     //DØD
                     break;
             }
+
+            pm.canMove = true;
+            pm.canTalk = true;
         }
+    }
+
+     private IEnumerator ActivateDialogueWithDelay(GameObject Dialogue)
+    {
+        if (Dialogue != null)
+        {
+            Dialogue.SetActive(true);
+
+            foreach (Transform child in Dialogue.transform)
+            {
+                if (child != null && child.gameObject != null)
+                {
+                    child.gameObject.SetActive(true);
+                    yield return new WaitForSeconds(DialougeDelay);
+                    child.gameObject.SetActive(false);
+                }
+            }
+
+            Dialogue.SetActive(false);
+            if (container.trashcollected >= trashNeeded)
+                followPlayer = true;
+        }
+            
     }
 
     private IEnumerator WaitToMove(float waitTime)
@@ -186,9 +226,6 @@ public class KarstenNPC : MonoBehaviour
 
         if (GameManager.instance.currentStage == GameManager.gameStage.stage4)
             GameManager.instance.currentStage = GameManager.gameStage.stage5;
-
-        pm.canMove = true;
-        pm.canTalk = true;
     }
 
     private void Follow()
