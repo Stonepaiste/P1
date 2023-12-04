@@ -124,7 +124,6 @@ public class SixpackFish : MonoBehaviour
             pm.canMove = false;
             pm.canTalk = false;
             pressToTalk.SetActive(false);
-            StartCoroutine(WaitToMove(waitToMoveTime));
             
             switch (currentState)
             {
@@ -150,8 +149,7 @@ public class SixpackFish : MonoBehaviour
 
             }
 
-            pm.canMove = true;
-            pm.canTalk = true;
+            
         }
     }
 
@@ -169,7 +167,20 @@ public class SixpackFish : MonoBehaviour
                     yield return new WaitForSeconds(DialougeDelay);
                     child.gameObject.SetActive(false);
                 }
+                
             }
+             if(currentState == state.saved && canChangeEnvironment == true)
+        {
+            canChangeEnvironment = false;
+            GetComponent<BoxCollider2D>().enabled = false;
+            runAnim.SetTrigger("Swim");
+            GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
+            GameManager.instance.currentCoralStage++;
+            GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
+            GameManager.instance.currentStage = GameManager.gameStage.stage6;
+        }
+            pm.canMove = true;
+            pm.canTalk = true;
 
             Dialogue.SetActive(false);
         }

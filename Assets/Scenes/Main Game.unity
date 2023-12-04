@@ -11504,7 +11504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pm: {fileID: 0}
   detectPlayer: 0
-  waitToMoveTime: 1
+  waitToMoveTime: 55
   currentState: 0
   textOffset: {x: -6.69, y: 3.4, z: 0}
   firstDialouge: {fileID: 993952793}
@@ -19969,7 +19969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   detectPlayer: 0
-  waitToMoveTime: 1
+  waitToMoveTime: 35
   containerTrash: {fileID: 1413207368}
   runAnim: {fileID: 1823125022}
   currentState: 1
