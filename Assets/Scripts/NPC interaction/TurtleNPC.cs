@@ -10,7 +10,7 @@ public class TurtleNPC : MonoBehaviour
     private PlayerMovementFisk pm;                   //spillerens script
     private Animator anim;                           //animatoren på npc
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
-    private float DialougeDelay = 5f;
+    private float DialougeDelay = 0.1f;
 
     public GameObject deadTurtle;
 
@@ -174,6 +174,8 @@ public class TurtleNPC : MonoBehaviour
                 if (child != null && child.gameObject != null)
                 {
                     child.gameObject.SetActive(true);
+                    yield return new WaitForSeconds(DialougeDelay);
+                    yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.M));
                     yield return new WaitForSeconds(DialougeDelay);
                     child.gameObject.SetActive(false);
                 }
