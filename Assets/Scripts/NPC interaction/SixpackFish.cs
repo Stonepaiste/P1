@@ -124,7 +124,7 @@ public class SixpackFish : MonoBehaviour
             pm.canMove = false;
             pm.canTalk = false;
             pressToTalk.SetActive(false);
-            
+
             switch (currentState)
             {
                 case state.earlymeeting:
@@ -135,10 +135,13 @@ public class SixpackFish : MonoBehaviour
                 case state.firstmeeting:
                     StartCoroutine(ActivateDialogueWithDelay(helpMeDialouge));
                     //helpMeDialouge.GetComponent<Animator>().SetTrigger("Animate");
-                    GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
-                    GameManager.instance.currentCoralStage++;
-                    GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
-                    GameManager.instance.currentStage = GameManager.gameStage.stage4;
+                    if (GameManager.instance.currentStage == GameManager.gameStage.stage3)
+                    {
+                        GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
+                        GameManager.instance.currentCoralStage++;
+                        GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
+                        GameManager.instance.currentStage = GameManager.gameStage.stage4;
+                    }
                     containerTrash.SetActive(true);
                     break;
 
@@ -188,21 +191,5 @@ public class SixpackFish : MonoBehaviour
             Dialogue.SetActive(false);
         }
             
-    }
-
-    private IEnumerator WaitToMove(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
-
-        if(currentState == state.saved && canChangeEnvironment == true)
-        {
-            canChangeEnvironment = false;
-            GetComponent<BoxCollider2D>().enabled = false;
-            runAnim.SetTrigger("Swim");
-            GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
-            GameManager.instance.currentCoralStage++;
-            GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
-            GameManager.instance.currentStage = GameManager.gameStage.stage6;
-        }
     }
 }
