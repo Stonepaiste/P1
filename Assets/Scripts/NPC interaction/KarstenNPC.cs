@@ -192,8 +192,7 @@ public class KarstenNPC : MonoBehaviour
                     break;
             }
 
-            pm.canMove = true;
-            pm.canTalk = true;
+            
         }
     }
 
@@ -212,7 +211,8 @@ public class KarstenNPC : MonoBehaviour
                     child.gameObject.SetActive(false);
                 }
             }
-
+            pm.canMove = true;
+            pm.canTalk = true;
             Dialogue.SetActive(false);
             if (container.trashcollected >= trashNeeded)
                 followPlayer = true;

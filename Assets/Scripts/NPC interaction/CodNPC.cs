@@ -115,7 +115,8 @@ public class CodNPC : MonoBehaviour
             yield return new WaitForSeconds(DialougeDelay);
             child.gameObject.SetActive(false);
         }
-
+        pm.canMove = true;
+        pm.canTalk = true;
         DeactivateDialogue();
         anim.SetTrigger("dead");
     }
