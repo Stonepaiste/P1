@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+// Post processing code inspired by youtube video: https://www.youtube.com/watch?v=JF4t9pNaZxg
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +27,14 @@ public class GameManager : MonoBehaviour
     public enum gameStage { stage1, stage2, stage3, stage4, stage5, stage6, stage7 }
     public gameStage currentStage = gameStage.stage1;
 
+    public float videoTransition = 0.5f;
+    public int videoWaitTime = 3;
+
+    public GameObject endVideo;
+    public float imageFadeTime;
+    public Image fadeImage;
+    
+
     public static GameManager instance;
 
 
@@ -31,6 +43,7 @@ public class GameManager : MonoBehaviour
         instance = this;
         ppVolume.profile.TryGetSettings(out colorGrading);
         colorGrading.active = true;
+        endVideo.SetActive(false);
     }
 
     void Update()
@@ -60,6 +73,11 @@ public class GameManager : MonoBehaviour
                 break;
         }
         colorGrading.saturation.value = saturationValue;
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            StartCoroutine(EndVideo());
+        }
     }
 
     /*
@@ -144,4 +162,33 @@ public class GameManager : MonoBehaviour
             objectsToShow[stage].SetActive(false);
         }
     }
+
+    public void StartVideo()
+    {
+        StartCoroutine(EndVideo());
+    }
+
+    public IEnumerator EndVideo()
+    {
+        float targetAlpha = 1.0f;
+        Color curColor = fadeImage.color;
+
+        while (Mathf.Abs(curColor.a - targetAlpha) > 0.0001f)
+        {
+            //Debug.Log(fadeImage.material.color.a);
+            curColor.a = Mathf.Lerp(curColor.a, targetAlpha, imageFadeTime * Time.deltaTime);
+            fadeImage.color = curColor;
+            yield return null;
+        }
+
+        if(endVideo != null)
+            endVideo.SetActive(true);
+            
+            yield return new WaitForSeconds(videoTransition);
+            fadeImage.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(videoWaitTime);
+        SceneManager.LoadScene(0);
+    }
+
 }

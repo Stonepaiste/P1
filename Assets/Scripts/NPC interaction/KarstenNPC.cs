@@ -111,6 +111,7 @@ public class KarstenNPC : MonoBehaviour
             //other.gameObject.GetComponent<BoxCollider2D>().enabled = false;
             savedFish.SetActive(true);
             sixpackFish.currentState = SixpackFish.state.saved;
+            currentState = state.finished;
         }
     }
 

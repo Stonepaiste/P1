@@ -157,6 +157,14 @@ public class TurtleNPC : MonoBehaviour
 
                 case state.dead:
                     StartCoroutine(ActivateDialogueWithDelay(deadDialouge));
+                    bool videoStart = true;
+                    if(videoStart == true)
+                    {
+                        GameManager.instance.StartVideo();
+                        videoStart = false;
+                        pm.canMove = false;
+                        
+                    }
                     break;
             }
 

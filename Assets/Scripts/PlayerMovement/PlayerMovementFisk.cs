@@ -73,6 +73,7 @@ public class PlayerMovementFisk : MonoBehaviour
 
     private void FixedUpdate() //fixed update er bedre til movement da den sætter en fast movement på trods af FPS og CPU power
     {
+
         if(canMove)
             Fiskekrop.AddForce(movement * speed);
     }

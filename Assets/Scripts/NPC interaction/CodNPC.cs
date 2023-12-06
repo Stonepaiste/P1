@@ -120,6 +120,10 @@ public class CodNPC : MonoBehaviour
         pm.canMove = true;
         pm.canTalk = true;
         DeactivateDialogue();
+        GameManager.instance.currentStage = GameManager.gameStage.stage2;
+        GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
+        GameManager.instance.currentCoralStage++;
+        GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
         anim.SetTrigger("dead");
     }
     
@@ -128,10 +132,7 @@ public class CodNPC : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         
         currentState = state.dead;
-        GameManager.instance.currentStage = GameManager.gameStage.stage2;
-        GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
-        GameManager.instance.currentCoralStage++;
-        GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
+      
         
         pm.canMove = true;
         pm.canTalk = true;
