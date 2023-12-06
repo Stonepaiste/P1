@@ -182,6 +182,7 @@ public class GameManager : MonoBehaviour
 
         if(endVideo != null)
             endVideo.SetActive(true);
+        fadeImage.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(videoWaitTime);
         SceneManager.LoadScene(0);
