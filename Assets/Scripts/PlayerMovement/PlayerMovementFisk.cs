@@ -16,6 +16,7 @@ public class PlayerMovementFisk : MonoBehaviour
     [SerializeField] private SixpackFish sixpackFish; //reference til dialogscript
     [SerializeField] private CodNPC cod; //reference til dialogscript
     [SerializeField] private KarstenNPC krabbe; //reference til dialogscript
+    [SerializeField] private float waitaftertalk = 8;
 
     public AudioSource swimSound;
 
@@ -27,6 +28,7 @@ public class PlayerMovementFisk : MonoBehaviour
     public bool Sixpacktalkaudio;
     public bool codtalkaudio;
     public bool krabbetalkaudio;
+    public bool turtlesilence;
 
     private Animator animator;
 
@@ -39,6 +41,7 @@ public class PlayerMovementFisk : MonoBehaviour
         Sixpacktalkaudio = false;
         codtalkaudio = false;
         krabbetalkaudio = true;
+        turtlesilence = false;
 
 
         animator = GetComponent<Animator>();
@@ -73,9 +76,12 @@ public class PlayerMovementFisk : MonoBehaviour
         if(canMove)
             Fiskekrop.AddForce(movement * speed);
     }
-
+    
     private void Update()
+
     {
+
+
         //Hvis vores input til at snakke bliver triggered, kalder den snakke action i npc scriptet
         if (talkAction.triggered && canTalk)
         {
@@ -84,6 +90,10 @@ public class PlayerMovementFisk : MonoBehaviour
                 turtle.Talk();
             //turtletalkaudio = true;
                 turtle.GetComponent<AudioSource>().Play();
+                turtlesilence = true;
+                StartCoroutine (Turtlespeakwait());
+
+
             }
 
             if(cod != null && cod.detectPlayer==true)
@@ -107,6 +117,26 @@ public class PlayerMovementFisk : MonoBehaviour
                krabbe.GetComponent<AudioSource>().Play();
             }
 
+
         }
     }
+   
+
+  IEnumerator Turtlespeakwait()
+       {
+            yield return new WaitForSeconds (waitaftertalk);
+
+            if (turtlesilence==true)
+            {
+                turtle.GetComponent<AudioSource>().enabled = false;
+
+            }
+            
+
+       }
+
+      
+
+    
 }
+
