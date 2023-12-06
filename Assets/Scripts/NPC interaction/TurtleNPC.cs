@@ -162,6 +162,8 @@ public class TurtleNPC : MonoBehaviour
                     {
                         GameManager.instance.StartVideo();
                         videoStart = false;
+                        pm.canMove = false;
+                        
                     }
                     break;
             }

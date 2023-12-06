@@ -4896,7 +4896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &408148301
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5890,7 +5890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &468371992
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8534,7 +8534,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705860969}
   - component: {fileID: 705860968}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: endVideo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12632,9 +12632,10 @@ MonoBehaviour:
   - {fileID: 8613770166734242051}
   - {fileID: 1495689564}
   currentStage: 0
+  videoTransition: 0.5
   videoWaitTime: 52
   endVideo: {fileID: 705860967}
-  imageFadeTime: 5
+  imageFadeTime: 4
   fadeImage: {fileID: 2103577731}
 --- !u!4 &1018305801
 Transform:
@@ -14633,7 +14634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1237775794
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18858,7 +18859,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1582848975
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20102,7 +20103,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1659155356
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24779,7 +24780,7 @@ GameObject:
   - component: {fileID: 2103577730}
   - component: {fileID: 2103577732}
   - component: {fileID: 2103577731}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
