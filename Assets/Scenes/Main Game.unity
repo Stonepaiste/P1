@@ -12638,6 +12638,7 @@ MonoBehaviour:
   endVideo: {fileID: 705860967}
   imageFadeTime: 4
   fadeImage: {fileID: 2103577731}
+  lastTurtleDialouge: {fileID: 1582848974}
 --- !u!4 &1018305801
 Transform:
   m_ObjectHideFlags: 0
@@ -14091,7 +14092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3c5b2090c1af48eeb126799ce10c21b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pm: {fileID: 0}
+  pm: {fileID: 1519121729}
   detectPlayer: 0
   waitToMoveTime: 55
   currentState: 0
@@ -17880,6 +17881,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1519121729 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4091248066723436992, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
+  m_PrefabInstance: {fileID: 700207547}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2296d40ccfd584c35a01a53e42b4655b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1528497534
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -88,7 +88,6 @@ public class GameManager : MonoBehaviour
         objectsToShow[currentCoralStage].SetActive(true);
     }
 
-
     public void StartVideo()
     {
         StartCoroutine(EndVideo());

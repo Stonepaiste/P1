@@ -158,13 +158,10 @@ public class KarstenNPC : MonoBehaviour
             {
                 case state.early:
                     StartCoroutine(ActivateDialogueWithDelay(early));
-                    //early.GetComponent<Animator>().SetTrigger("Animate");
                     break;
 
                 case state.firstmeeting:
-                    //Sige hjælp med skrald
                     StartCoroutine(ActivateDialogueWithDelay(helpWithTrash));
-                    //helpWithTrash.GetComponent<Animator>().SetTrigger("Animate");
                     GameManager.instance.IncreaseCoralStage();
                     GameManager.instance.currentStage = GameManager.gameStage.stage5;
                     currentState = state.follow;
@@ -174,19 +171,15 @@ public class KarstenNPC : MonoBehaviour
                     if(container.trashcollected >= trashNeeded)
                     {
                         StartCoroutine(ActivateDialogueWithDelay(thankyouDialouge));
-                        //thankyouDialouge.GetComponent<Animator>().SetTrigger("Animate");
                     }
                     else
                     {
                         StartCoroutine(ActivateDialogueWithDelay(helpWithTrashStill));
-                        //helpWithTrashStill.GetComponent<Animator>().SetTrigger("Animate");
                     }
                     break;
 
                 case state.finished:
                     StartCoroutine(ActivateDialogueWithDelay(finishedDialouge));
-                    //finishedDialouge.GetComponent<Animator>().SetTrigger("Animate");
-                    //DØD
                     break;
             }
 
