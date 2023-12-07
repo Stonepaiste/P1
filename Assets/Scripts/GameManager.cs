@@ -27,12 +27,14 @@ public class GameManager : MonoBehaviour
     public enum gameStage { stage1, stage2, stage3, stage4, stage5, stage6, stage7 }
     public gameStage currentStage = gameStage.stage1;
 
+
+    [Header("End video parameters")]
     public float videoTransition = 0.5f;
     public int videoWaitTime = 3;
-
     public GameObject endVideo;
     public float imageFadeTime;
     public Image fadeImage;
+    public GameObject lastTurtleDialouge;
     
 
     public static GameManager instance;
@@ -71,97 +73,21 @@ public class GameManager : MonoBehaviour
             case gameStage.stage6:
                 saturationValue = satStage6;
                 break;
+
+            case gameStage.stage7:
+                StartCoroutine(EndVideo());
+                break;
         }
         colorGrading.saturation.value = saturationValue;
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            StartCoroutine(EndVideo());
-        }
     }
 
-    /*
-    private void OnTriggerEnter2D(Collider2D other)
+    public void IncreaseCoralStage()
     {
-        if (other.CompareTag("Player"))
-        {
-            if (checkDown)
-            {
-                float relativePosition = other.transform.position.y - specificSide.position.y;
-                if (currentStage < maxStages && relativePosition >= 0)
-                {
-                    // Deactivate objekter fra den sidte stage.
-                    if (currentStage >= 0)
-                    {
-                        DeactivateObjectsForStage(currentStage);
-                    }
-
-                    currentStage++;
-                    if (currentStage < objectsToShow.Count)
-                    {
-                        ActivateObjectsForStage(currentStage);
-                    }
-                }
-            }
-            if (checkRight) 
-            {
-                float relativePosition = other.transform.position.x - specificSide.position.x;
-                if (currentStage < maxStages && relativePosition >= 0)
-                {
-                    // Deactivate objekter fra den sidte stage.
-                    if (currentStage >= 0)
-                    {
-                        DeactivateObjectsForStage(currentStage);
-                    }
-
-                    currentStage++;
-                    if (currentStage < objectsToShow.Count)
-                    {
-                        ActivateObjectsForStage(currentStage);
-                    }
-                }
-            }
-
-            if (!checkRight)
-            {
-                float relativePosition = other.transform.position.x - specificSide.position.x;
-                if (currentStage < maxStages && relativePosition <=0)
-                {
-                    // Deactivate objekter fra den sidte stage.
-                    if (currentStage >= 0)
-                    {
-                        DeactivateObjectsForStage(currentStage);
-                    }
-
-                    currentStage++;
-                    if (currentStage < objectsToShow.Count)
-                    {
-                        ActivateObjectsForStage(currentStage);
-                    }
-                }
-            }
-
-        }
-
+        objectsToShow[currentCoralStage].SetActive(false);
+        currentCoralStage++;
+        objectsToShow[currentCoralStage].SetActive(true);
     }
-    */
-    public void ActivateObjectsForStage(int stage)
-    {
-        // Activate objekter fra den stage vi er kommet til.
-        if (stage < objectsToShow.Count)
-        {
-            objectsToShow[stage].SetActive(true);
-        }
-    }  
 
-    public void DeactivateObjectsForStage(int stage)
-    {
-        // Activate objekter fra den stage vi er kommet til.
-        if (stage < objectsToShow.Count)
-        {
-            objectsToShow[stage].SetActive(false);
-        }
-    }
 
     public void StartVideo()
     {
@@ -181,11 +107,13 @@ public class GameManager : MonoBehaviour
             yield return null;
         }
 
+        lastTurtleDialouge.SetActive(false);
         if(endVideo != null)
             endVideo.SetActive(true);
             
-            yield return new WaitForSeconds(videoTransition);
-            fadeImage.gameObject.SetActive(false);
+        yield return new WaitForSeconds(videoTransition);
+        fadeImage.gameObject.SetActive(false);
+        
 
         yield return new WaitForSeconds(videoWaitTime);
         SceneManager.LoadScene(0);

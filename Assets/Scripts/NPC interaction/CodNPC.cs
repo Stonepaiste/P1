@@ -121,9 +121,7 @@ public class CodNPC : MonoBehaviour
         pm.canTalk = true;
         DeactivateDialogue();
         GameManager.instance.currentStage = GameManager.gameStage.stage2;
-        GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
-        GameManager.instance.currentCoralStage++;
-        GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
+        GameManager.instance.IncreaseCoralStage();
         anim.SetTrigger("dead");
     }
     

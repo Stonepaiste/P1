@@ -165,9 +165,7 @@ public class KarstenNPC : MonoBehaviour
                     //Sige hjælp med skrald
                     StartCoroutine(ActivateDialogueWithDelay(helpWithTrash));
                     //helpWithTrash.GetComponent<Animator>().SetTrigger("Animate");
-                    GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
-                    GameManager.instance.currentCoralStage++;
-                    GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
+                    GameManager.instance.IncreaseCoralStage();
                     GameManager.instance.currentStage = GameManager.gameStage.stage5;
                     currentState = state.follow;
                     break;
