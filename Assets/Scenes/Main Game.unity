@@ -4896,7 +4896,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &408148301
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5890,7 +5890,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &468371992
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8481,11 +8481,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5631437196618962459, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 56.4
+      value: 57
       objectReference: {fileID: 0}
     - target: {fileID: 5631437196618962459, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.3
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 5631437196618962459, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -8519,7 +8519,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4598594189308486223, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -8534,7 +8535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 705860969}
   - component: {fileID: 705860968}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: endVideo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12632,9 +12633,10 @@ MonoBehaviour:
   - {fileID: 8613770166734242051}
   - {fileID: 1495689564}
   currentStage: 0
+  videoTransition: 0.5
   videoWaitTime: 52
   endVideo: {fileID: 705860967}
-  imageFadeTime: 5
+  imageFadeTime: 4
   fadeImage: {fileID: 2103577731}
 --- !u!4 &1018305801
 Transform:
@@ -14633,7 +14635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1237775794
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18858,7 +18860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1582848975
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20102,7 +20104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1659155356
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24779,7 +24781,7 @@ GameObject:
   - component: {fileID: 2103577730}
   - component: {fileID: 2103577732}
   - component: {fileID: 2103577731}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}

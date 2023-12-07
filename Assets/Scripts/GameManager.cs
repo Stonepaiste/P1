@@ -27,7 +27,8 @@ public class GameManager : MonoBehaviour
     public enum gameStage { stage1, stage2, stage3, stage4, stage5, stage6, stage7 }
     public gameStage currentStage = gameStage.stage1;
 
-    public int videoWaitTime = 5;
+    public float videoTransition = 0.5f;
+    public int videoWaitTime = 3;
 
     public GameObject endVideo;
     public float imageFadeTime;
@@ -182,7 +183,9 @@ public class GameManager : MonoBehaviour
 
         if(endVideo != null)
             endVideo.SetActive(true);
-        fadeImage.gameObject.SetActive(false);
+            
+            yield return new WaitForSeconds(videoTransition);
+            fadeImage.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(videoWaitTime);
         SceneManager.LoadScene(0);

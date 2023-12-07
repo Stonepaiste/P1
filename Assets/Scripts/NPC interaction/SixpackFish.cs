@@ -136,11 +136,15 @@ public class SixpackFish : MonoBehaviour
                 case state.firstmeeting:
                     StartCoroutine(ActivateDialogueWithDelay(helpMeDialouge));
                     //helpMeDialouge.GetComponent<Animator>().SetTrigger("Animate");
+                    if (GameManager.instance.currentStage == GameManager.gameStage.stage3)
+                    {
                     GameManager.instance.DeactivateObjectsForStage(GameManager.instance.currentCoralStage);
                     GameManager.instance.currentCoralStage++;
                     GameManager.instance.ActivateObjectsForStage(GameManager.instance.currentCoralStage);
                     GameManager.instance.currentStage = GameManager.gameStage.stage4;
                     containerTrash.SetActive(true);
+                    }
+                   
                     break;
 
                 case state.saved:
