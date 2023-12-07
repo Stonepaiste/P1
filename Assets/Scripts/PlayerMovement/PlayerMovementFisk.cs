@@ -83,29 +83,29 @@ public class PlayerMovementFisk : MonoBehaviour
             if(turtle != null && turtle.detectPlayer==true)
             { 
                 turtle.Talk();
-            //turtletalkaudio = true;
+                //turtletalkaudio = true;
                 turtle.GetComponent<AudioSource>().Play();
             }
 
             if(cod != null && cod.detectPlayer==true)
             { 
                 cod.Talk();
-              //codtalkaudio = true;
+                //codtalkaudio = true;
                 cod.GetComponent<AudioSource>().Play();
             }
 
             if(sixpackFish != null && sixpackFish.detectPlayer==true)
             { 
                 sixpackFish.Talk();
-            //Sixpacktalkaudio = true;
-               sixpackFish.GetComponent<AudioSource>().Play();
+                //Sixpacktalkaudio = true;
+                sixpackFish.GetComponent<AudioSource>().Play();
             }
 
             if (krabbe != null && krabbe.detectPlayer==true)
-            { 
+            {
                 krabbe.Talk();
-           // krabbetalkaudio = true;
-               krabbe.GetComponent<AudioSource>().Play();
+                // krabbetalkaudio = true;
+                krabbe.GetComponent<AudioSource>().Play();
             }
 
         }

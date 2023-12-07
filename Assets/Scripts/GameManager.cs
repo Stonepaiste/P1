@@ -151,7 +151,7 @@ public class GameManager : MonoBehaviour
         {
             objectsToShow[stage].SetActive(true);
         }
-    }
+    }  
 
     public void DeactivateObjectsForStage(int stage)
     {
