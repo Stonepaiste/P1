@@ -178,9 +178,11 @@ public class KarstenNPC : MonoBehaviour
                     {
                         StartCoroutine(ActivateDialogueWithDelay(helpWithTrashStill));
                     }
+                    sixpackFish.canTalk = false;
                     break;
 
                 case state.finished:
+                    sixpackFish.canTalk = true;
                     StartCoroutine(ActivateDialogueWithDelay(finishedDialouge));
                     break;
             }

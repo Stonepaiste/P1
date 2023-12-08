@@ -26,6 +26,7 @@ public class SixpackFish : MonoBehaviour
     [SerializeField] private GameObject thankyouDialouge;
     [SerializeField] private GameObject pressToTalk;      //objekt der indeholder press m tekst
 
+    public bool canTalk = true;
 
     private void Start()
     {
@@ -79,6 +80,10 @@ public class SixpackFish : MonoBehaviour
                 currentState = state.firstmeeting;
                 break;
         }
+
+        if (currentState == state.saved)
+            canTalk = true;
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -116,7 +121,7 @@ public class SixpackFish : MonoBehaviour
 
     public void Talk()
     {
-        if (detectPlayer)
+        if (detectPlayer && canTalk == true)
         {
             pm.canMove = false;
             pm.canTalk = false;
