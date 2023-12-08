@@ -8497,11 +8497,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5631437196618962459, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 75.5
+      value: 77.8
       objectReference: {fileID: 0}
     - target: {fileID: 5631437196618962459, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.19
+      value: 14.5
       objectReference: {fileID: 0}
     - target: {fileID: 5631437196618962459, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
       propertyPath: m_LocalPosition.z
@@ -23674,6 +23674,7 @@ MonoBehaviour:
   helpMeDialouge: {fileID: 1659155355}
   thankyouDialouge: {fileID: 1768104878}
   pressToTalk: {fileID: 1579547792}
+  canTalk: 1
 --- !u!1 &1956363799
 GameObject:
   m_ObjectHideFlags: 0
