@@ -23,6 +23,8 @@ public class KarstenNPC : MonoBehaviour
     public float speed = 4;
     public float distanceToPlayer = 2;
 
+    private bool canTalk = true;
+
     [Header("State")]
     public state currentState = state.firstmeeting;
     public enum state { early, firstmeeting, follow, finished }
@@ -143,7 +145,7 @@ public class KarstenNPC : MonoBehaviour
 
     public void Talk()
     {
-        if (detectPlayer)
+        if (detectPlayer && canTalk == true)
         {
             pressToTalk.SetActive(false);
 
@@ -227,16 +229,19 @@ public class KarstenNPC : MonoBehaviour
         if(followPlayer == true)
         {
             bool isMoving = false;
+            canTalk = true;
 
             if(Vector3.Distance(transform.position, pm.transform.position) > distanceToPlayer && cb.targetIsSixpackfish == false)
             {
                 transform.position = Vector3.MoveTowards(transform.position, pm.transform.position, crabSpeed);
                 isMoving = true;
+                canTalk = false;
             }
             else if(Vector3.Distance(transform.position, sixpackFish.transform.position) > distanceToPlayer && cb.targetIsSixpackfish == true)
             {
                 transform.position = Vector3.MoveTowards(transform.position, sixpackFish.transform.position, crabSpeed);
                 isMoving = true;
+                canTalk = false;
             }
 
             anim.SetBool("IsMoving", isMoving);

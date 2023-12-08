@@ -8444,6 +8444,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -2410116158348414310, guid: 596f1ebfddf6748eeaace19e647c2aa6, type: 2}
     - target: {fileID: 1528806003895754212, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528806003895754212, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1528806003895754212, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: -7329612650903915927, guid: 596f1ebfddf6748eeaace19e647c2aa6, type: 2}
@@ -18006,7 +18014,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "N\xE5r jeg siger \"Skraldemonstre er dem der \xF8del\xE6gger vores koraller\""
+  m_text: "N\xE5r jeg siger \"Skraldemonstre er dem der \xF8del\xE6gger vores koraler\""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 21db0b5f89f1149058f74b1001c15bde, type: 2}
   m_sharedMaterial: {fileID: 6317999137636694831, guid: 21db0b5f89f1149058f74b1001c15bde, type: 2}
