@@ -173,12 +173,13 @@ public class KarstenNPC : MonoBehaviour
                     if(container.trashcollected >= trashNeeded)
                     {
                         StartCoroutine(ActivateDialogueWithDelay(thankyouDialouge));
+                         
+                        sixpackFish.canTalk = false;
                     }
                     else
                     {
                         StartCoroutine(ActivateDialogueWithDelay(helpWithTrashStill));
                     }
-                    sixpackFish.canTalk = false;
                     break;
 
                 case state.finished:
