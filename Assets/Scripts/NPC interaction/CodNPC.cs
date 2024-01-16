@@ -120,6 +120,7 @@ public class CodNPC : MonoBehaviour
         pm.canMove = true;
         pm.canTalk = true;
         DeactivateDialogue();
+        //tells the gamemanager to switch gamestate to stage 2
         GameManager.instance.currentStage = GameManager.gameStage.stage2;
         GameManager.instance.IncreaseCoralStage();
         anim.SetTrigger("dead");

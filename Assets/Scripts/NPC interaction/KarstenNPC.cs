@@ -25,8 +25,15 @@ public class KarstenNPC : MonoBehaviour
 
     private bool canTalk = true;
 
+    // Interne state (NPC'en egen state)
     [Header("State")]
     public state currentState = state.firstmeeting;
+
+    // de 4 states Karsten NPC har.
+    // Early hvis man kommer inden gamestate4
+    //Firstmeeting ved gamestate 4
+    // Follow når man har hjulpet ham med skraldet
+    // Finished efter han har fulgt en og man har hjulpet sixpackfisken. 
     public enum state { early, firstmeeting, follow, finished }
 
     [Header("dialouge boxes")]
@@ -55,6 +62,7 @@ public class KarstenNPC : MonoBehaviour
         pressToTalk.SetActive(false);
     }
 
+    // Defineing a method to turn off all the text boxes
     private void DeactivateChilden(GameObject DiffDialouge)
     {
         if (DiffDialouge != null)
@@ -76,7 +84,8 @@ public class KarstenNPC : MonoBehaviour
         CheckState();
         Follow();
     }
-
+    // I hvert update tjekker checkstate Gamemanagers current stage og da Karsten her har firstmeeting på gamemanagerns stage 4
+    // sætter den NPC state til firstmeeting
     private void CheckState()
     {
         switch (GameManager.instance.currentStage)
@@ -92,7 +101,7 @@ public class KarstenNPC : MonoBehaviour
             case GameManager.gameStage.stage3:
                 currentState = state.early;
                 break;
-
+                // hvis gamemanagers current state er "state4" så bliver karsten NPC state sat til firstmeeting
             case GameManager.gameStage.stage4:
                 currentState = state.firstmeeting;
                 break;
@@ -107,6 +116,8 @@ public class KarstenNPC : MonoBehaviour
             detectPlayer = true;
             pressToTalk.SetActive(true);
         }
+
+        //nedenunder tjekker vi om krappen møder sixpackfisken og om der stadig snakkes for så at skifte state til finished. 
         if (other.CompareTag("Sixpackfish"))
         {
             other.gameObject.GetComponent<SpriteRenderer>().enabled = false;
@@ -132,7 +143,7 @@ public class KarstenNPC : MonoBehaviour
 
         }
     }
-
+    // definering af positionen af teksten bliver først kaldt nede i IEnumerator linie 210
     private void PlaceText()
     {
         helpWithTrash.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
@@ -143,6 +154,7 @@ public class KarstenNPC : MonoBehaviour
         helpWithTrashStill.transform.position = mainCam.WorldToScreenPoint(transform.position + textOffset);
     }
 
+    // if statement that starts a switch statement if our player has collied & cantalk = true
     public void Talk()
     {
         if (detectPlayer && canTalk == true)
@@ -156,6 +168,7 @@ public class KarstenNPC : MonoBehaviour
             DeactivateChilden(early); 
             DeactivateChilden(finishedDialouge); 
 
+            // Switch statement der starter de rigtige textbokse ud fra NPC'ens state. 
             switch (currentState)
             {
                 case state.early:
@@ -192,14 +205,21 @@ public class KarstenNPC : MonoBehaviour
         }
     }
 
+    // Our started couroutine with our activated gameobject that now goes through textbox transform placement and makes
+    // that the remaining dialogue from that child shows when hitting "M"  
      private IEnumerator ActivateDialogueWithDelay(GameObject Dialogue)
      {
+        // tjekker om vores Dialogue gameobjekt er intialiseret med noget. Hvis det ikke er tomt != kører den If statment. 
         if (Dialogue != null)
         {
+            // Aktiverer gameobjektet der er injekseret i vores Dialogue variabel.
+            //Det referer til de definerede gamebojects før start()
             Dialogue.SetActive(true);
 
+            //fortæller hvor teksten skal placeres via placetextmetoden på linje 147.
             foreach (Transform child in Dialogue.transform)
             {
+                //hvis både parent gameobjet og child er initialiseret i vores Dialogue variabel kører den videre.
                 if (child != null && child.gameObject != null)
                 {
                     child.gameObject.SetActive(true);
@@ -226,6 +246,9 @@ public class KarstenNPC : MonoBehaviour
             GameManager.instance.currentStage = GameManager.gameStage.stage5;
     }
 
+
+    // Krabbens move script
+    //tjekker om vores vores followplaer bool er true 
     private void Follow()
     {
         var crabSpeed = speed * Time.deltaTime;

@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     public Image fadeImage;
     public GameObject lastTurtleDialouge;
     
-
+    // gør sådan at der er kun er 1 instance af gamemanageren af gangen.. Called Singleton pattern 
     public static GameManager instance;
 
 
@@ -81,6 +81,9 @@ public class GameManager : MonoBehaviour
         colorGrading.saturation.value = saturationValue;
     }
 
+    // når vi kalder increatecoralstage() i NPC scriptet kører nedenstående kode.
+    // Currentstage slukker det aktive coralstage i vores list currentCoralStage++ går videre til næste element i listen
+    //objectsToShow set active tænder for det nye stage.
     public void IncreaseCoralStage()
     {
         objectsToShow[currentCoralStage].SetActive(false);
@@ -92,7 +95,7 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(EndVideo());
     }
-
+    // Hører til startcoroutine metoden og er den interface der skifter to next. læs lige lidt mere https://habr.com/en/articles/684938/
     public IEnumerator EndVideo()
     {
         float targetAlpha = 1.0f;

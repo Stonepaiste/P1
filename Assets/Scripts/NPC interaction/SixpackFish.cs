@@ -19,22 +19,25 @@ public class SixpackFish : MonoBehaviour
     public state currentState = state.firstmeeting;
     public enum state { earlymeeting, firstmeeting, help, saved }
 
+    // Defineing gameobject variables to put canvas textbox into and
+    // makeing them visible in inspector under the "dialogue boxes" header.
     [Header("dialouge boxes")]
-    [SerializeField] private Vector3 textOffset;     //offset hvor tekst skal placere sig ift. npc'en selv
+    [SerializeField] private Vector3 textOffset;     //offset offset where the text should be placed based of on the NPC
     [SerializeField] private GameObject earlyDialouge;
     [SerializeField] private GameObject helpMeDialouge;
     [SerializeField] private GameObject thankyouDialouge;
-    [SerializeField] private GameObject pressToTalk;      //objekt der indeholder press m tekst
+    [SerializeField] private GameObject pressToTalk;      //objekt that include the "press M" text. 
 
     public bool canTalk = true;
 
     private void Start()
     {
-        mainCam = Camera.main;                      //henter kamera
+        mainCam = Camera.main;                      //Collects the camera
         anim = GetComponent<Animator>();
         pm = FindAnyObjectByType<PlayerMovementFisk>();
 
-        //Sætter de rigtige parametre til false når spillet starter
+       
+        // sets the right pararmeteres to false when the game starts. 
         detectPlayer = false;
         helpMeDialouge.SetActive(false);
         thankyouDialouge.SetActive(false);
@@ -42,7 +45,7 @@ public class SixpackFish : MonoBehaviour
         pressToTalk.SetActive(false);
    
     }
-
+    //
     private void DeactivateChilden(GameObject DiffDialouge)
     {
         if (DiffDialouge != null)
@@ -59,7 +62,8 @@ public class SixpackFish : MonoBehaviour
 
     private void Update()
     {
-        //Siger til tekstbokse at de skal placere sig ved npc'ens position + det givne offset
+        // Tells the textboxes that they need to be placed at the NPC's position + the given offset
+       
         PlaceText();
         CheckState();
     }
@@ -87,7 +91,8 @@ public class SixpackFish : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other)
-    //Hvis spilleren kommer ind i collideren bliver bool sat til true og press m tekst aktiveret
+
+    //If the player gets into the collider, the bool will be set to true and the "press m" text will be activated.
     {
         if (other.CompareTag("Player"))
         {
@@ -97,7 +102,7 @@ public class SixpackFish : MonoBehaviour
     }
 
     private void OnTriggerExit2D(Collider2D other)
-    //Hvis spilleren går ud a collideren slukkes der for alt tekst igen
+    //If the player leaves the collider again the text boxes will be turned off.
     {
         if (other.CompareTag("Player"))
         {
@@ -121,6 +126,7 @@ public class SixpackFish : MonoBehaviour
 
     public void Talk()
     {
+        // if statement 
         if (detectPlayer && canTalk == true)
         {
             pm.canMove = false;
@@ -141,6 +147,7 @@ public class SixpackFish : MonoBehaviour
                     StartCoroutine(ActivateDialogueWithDelay(helpMeDialouge));
                     if (GameManager.instance.currentStage == GameManager.gameStage.stage3)
                     {
+                        // // tells gamemanager to increase the coralstage and change gamestate to stage 4
                         GameManager.instance.IncreaseCoralStage();
                         GameManager.instance.currentStage = GameManager.gameStage.stage4;
                         containerTrash.SetActive(true);
@@ -188,18 +195,19 @@ public class SixpackFish : MonoBehaviour
         }
             
     }
+    //Eveything below was a dublicate of the above If statement and is commentet out.
 
-    private IEnumerator WaitToMove(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
+    //private IEnumerator WaitToMove(float waitTime)
+    //{
+       // yield return new WaitForSeconds(waitTime);
 
-        if(currentState == state.saved && canChangeEnvironment == true)
-        {
-            canChangeEnvironment = false;
-            GetComponent<BoxCollider2D>().enabled = false;
-            runAnim.SetTrigger("Swim");
-            GameManager.instance.IncreaseCoralStage();
-            GameManager.instance.currentStage = GameManager.gameStage.stage6;
-        }
-    }
+      //  if(currentState == state.saved && canChangeEnvironment == true)
+      //  {
+     //       canChangeEnvironment = false;
+       //     GetComponent<BoxCollider2D>().enabled = false;
+       //     runAnim.SetTrigger("Swim");
+        //    GameManager.instance.IncreaseCoralStage();
+        //    GameManager.instance.currentStage = GameManager.gameStage.stage6;
+        //}
+    //}
 }
