@@ -8,22 +8,22 @@ public class KarstenNPC : MonoBehaviour
 {
     private Camera mainCam;                          //Camera
     private PlayerMovementFisk pm;                   //spillerens script
-    private CollideBehavior cb;
-    private SixpackFish sixpackFish;
+    private CollideBehavior cb;                      // noget med sixpackfish
+    private SixpackFish sixpackFish;                 //sixpackfish
     [HideInInspector] public bool detectPlayer;       //Bool der holder styr om spilleren er tæt på npcen
     private Animator anim;
-    public GameObject savedFish;
-    private float DialougeDelay = 0.1f;
+    public GameObject savedFish;                      // Gameobject med sprite uden sixpackplastik
+    private float DialougeDelay = 0.1f;               //
 
 
     [SerializeField] private float waitToMoveTime = 5;
-    public int trashNeeded = 10;
-    public DestroyTrashContainer container;
-    public bool followPlayer;
-    public float speed = 4;
-    public float distanceToPlayer = 2;
+    public int trashNeeded = 10;                        //Hvor meget skrald spilleren skal samle for at progresse
+    public DestroyTrashContainer container;             //Script på container
+    public bool followPlayer;                           //Bool der styrer om krabbe skal følge efter
+    public float speed = 4;                             //Movespeed når krabbe følger
+    public float distanceToPlayer = 2;                  //Distancen krabbe holder når den følger efter
 
-    private bool canTalk = true;
+    private bool canTalk = true;                        // styrer om krabben kan snakke
 
     // Interne state (NPC'en egen state)
     [Header("State")]
@@ -36,7 +36,7 @@ public class KarstenNPC : MonoBehaviour
     // Finished efter han har fulgt en og man har hjulpet sixpackfisken. 
     public enum state { early, firstmeeting, follow, finished }
 
-    [Header("dialouge boxes")]
+    [Header("dialouge boxes")] //gameobjects med dialoger
     [SerializeField] private Vector3 textOffset;        //offset hvor tekst skal placere sig ift. npc'en selv
     [SerializeField] private GameObject helpWithTrash;
     [SerializeField] private GameObject helpWithTrashStill;
@@ -81,7 +81,7 @@ public class KarstenNPC : MonoBehaviour
     {
         //Siger til tekstbokse at de skal placere sig ved npc'ens position + det givne offset
         PlaceText();
-        CheckState();
+        CheckState();       
         Follow();
     }
     // I hvert update tjekker checkstate Gamemanagers current stage og da Karsten her har firstmeeting på gamemanagerns stage 4
