@@ -20,11 +20,11 @@ public class PlayerMovementFisk : MonoBehaviour
 
     public AudioSource swimSound;
 
-    public bool canMove;
+    public bool canMove; //can er en variable om spilleren kan bevæge sig når man snakker med NPC'er
 
-    public bool canTalk;
+    public bool canTalk; //Boolean for om spilleren kan snakke
 
-    public bool turtletalkaudio;
+    public bool turtletalkaudio;  //forskellige boolean for at tænde lyd
     public bool Sixpacktalkaudio;
     public bool codtalkaudio;
     public bool krabbetalkaudio;
@@ -32,41 +32,41 @@ public class PlayerMovementFisk : MonoBehaviour
 
     private Animator animator;
 
-    private void Awake() // kører kun 1 gang når program starter 
+    private void Awake() // kører kun 1 gang når program starter inden alt andet
     {
-        canMove = true;
-        canTalk = true;
+        canMove = true;  //når spillet starter må spilleren bevæge sig
+        canTalk = true;    //boolean til at spillere godt kan snakke med NPC
 
-        turtletalkaudio = false;
+        turtletalkaudio = false;  //skifter alle lyde til false altså fra
         Sixpacktalkaudio = false;
         codtalkaudio = false;
         krabbetalkaudio = true;
         turtlesilence = false;
 
 
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator>();  //vi får vore Rigidbody 
         Fiskekrop = GetComponent<Rigidbody2D>(); // Vi sætter "fiskekrop" ridigbody til rigidbody på vores gameobject
         talkAction = inputActions.FindActionMap("Player").FindAction("Talk"); //Finder talk inputtet i input mappet i unity
     }
 
     private void OnMove(InputValue value) // vi laver en funktion der hodler øje med vores input system values
     {
-        movement = value.Get<Vector2>(); // Movement bliver sat til vector2 fra vores input action når bruger trykker WASD
+        movement = value.Get<Vector2>(); // vi tag vores vector2 value fra vores input manager
 
-        if (movement.x != 0 || movement.y != 0)
+        if (movement.x != 0 || movement.y != 0) // vi tjekker om spilleren bevæger sig
         {
-            if (canMove)
+            if (canMove) // hvis vi canmove er true kører næste section
             {
-                animator.SetFloat("Horizontal", movement.x);
-                animator.SetFloat("Vertical", movement.y);
-                animator.SetBool("IsWalking", true);
-                swimSound.Play();
+                animator.SetFloat("Horizontal", movement.x); //vi tag x float værdi og sætter ind i vores animator
+                animator.SetFloat("Vertical", movement.y);  //vi tag y float værdi og sætter ind i vores animator
+                animator.SetBool("IsWalking", true); //vi tag vores boolean for om vi skal labvve run animation til true
+                swimSound.Play(); //vi player vores gå lyd
             }
         }
         else
         {
-            animator.SetBool("IsWalking", false);
-            swimSound.Stop();
+            animator.SetBool("IsWalking", false);   //ellers sætter vi vores boolean til false / idle
+            swimSound.Stop(); //lyden bliver stopper
         }
 
     }
@@ -75,7 +75,7 @@ public class PlayerMovementFisk : MonoBehaviour
     {
 
         if(canMove)
-            Fiskekrop.AddForce(movement * speed);
+            Fiskekrop.AddForce(movement * speed);  //vi tag vores rigidbody og bruger addforce til at bevæge vores spiller med movement
     }
     
     private void Update()
