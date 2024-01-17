@@ -8471,6 +8471,10 @@ PrefabInstance:
       propertyPath: OutputAudioMixerGroup
       value: 
       objectReference: {fileID: -7329612650903915927, guid: 596f1ebfddf6748eeaace19e647c2aa6, type: 2}
+    - target: {fileID: 3726109689394085800, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4091248066723436992, guid: c9acbb61079c343db9deef0026d399c0, type: 3}
       propertyPath: cod
       value: 
@@ -12648,7 +12652,6 @@ MonoBehaviour:
   satStage5: -30
   satStage6: -40
   currentCoralStage: 0
-  previousCoralStage: 0
   objectsToShow:
   - {fileID: 284811293628255339}
   - {fileID: 4567097813964143026}
