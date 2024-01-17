@@ -8,10 +8,10 @@ public class Sounds : MonoBehaviour
     //SixpackFish sixpacktalkactive;
     //PlayerMovementFisk pm;
 
-    public AudioSource sixpackfishAudiosource;
-    public AudioSource krabbeaudiosource;
-    public AudioSource turtleaudiosource;
-    public AudioSource codaudiosource;
+   // public AudioSource sixpackfishAudiosource;
+    //public AudioSource krabbeaudiosource;
+    //public AudioSource turtleaudiosource;
+    //public AudioSource codaudiosource;
     
     
 
