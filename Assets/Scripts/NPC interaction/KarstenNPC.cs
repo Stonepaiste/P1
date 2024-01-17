@@ -155,15 +155,19 @@ public class KarstenNPC : MonoBehaviour
     }
 
     // if statement that starts a switch statement if our player has collied & cantalk = true
+    // And "M" is triggered inside the playermovement script. 
+
+
     public void Talk()
     {
         if (detectPlayer && canTalk == true)
         {
             pressToTalk.SetActive(false);
 
-            StartCoroutine(WaitToMove(waitToMoveTime));
+           // StartCoroutine(WaitToMove(waitToMoveTime));
             pm.canMove = false;
-            pm.canTalk = false;
+            pm.canTalk = false; // turns off the pm.cantalk which is part of the if statement that activates this Talk() method.
+                                // this happens so we can't start the switch statement all over again before the next NPC state has been actiavted.
             DeactivateChilden(helpWithTrash); 
             DeactivateChilden(early); 
             DeactivateChilden(finishedDialouge); 
@@ -238,13 +242,15 @@ public class KarstenNPC : MonoBehaviour
             
      }
 
-    private IEnumerator WaitToMove(float waitTime)
-    {
-        yield return new WaitForSeconds(waitTime);
+   // private IEnumerator WaitToMove(float waitTime)
+    //{
+      //  yield return new WaitForSeconds(waitTime);
 
-        if (GameManager.instance.currentStage == GameManager.gameStage.stage4)
-            GameManager.instance.currentStage = GameManager.gameStage.stage5;
-    }
+        //if (GameManager.instance.currentStage == GameManager.gameStage.stage4)
+          //  GameManager.instance.currentStage = GameManager.gameStage.stage5;
+
+
+//    }
 
 
     // Krabbens move script
